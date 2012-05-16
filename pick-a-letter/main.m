@@ -20,7 +20,7 @@
 //  main.m
 //  pick-a-letter
 //
-//  Created by joverson on 5/11/12.
+//  Created by joverson on 5/11/1 	2.
 //  Copyright __MyCompanyName__ 2012. All rights reserved.
 //
 

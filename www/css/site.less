@@ -1,0 +1,119 @@
+@import 'bootstrap/bootstrap.less';
+@import 'bootstrap/responsive.less';
+
+@pickableColor : #a3128c;
+
+
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none; /* Disable selection/Copy of UIWebView */
+}
+
+body,html {
+  padding:0;
+  margin:0;
+  background-color: #fff;
+  height:100%;
+  width:100%;
+}
+
+#content {
+  width:100%;
+  height:100%;
+}
+
+.pickable-list {
+  width:100%;
+  height:100%;
+}
+
+.pickable-item {
+  float:left;
+  position:relative;
+  -webkit-transition-property:opacity;
+  -webkit-transition-duration:500ms;
+
+  &.fullscreen {
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+  }
+  div {
+    text-align:center;
+    font-size:220px;
+    border-radius:5px;
+    color:#aaa;
+    width:94%;
+    height:94%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -47%;
+    margin-top: -47%;
+    border:5px solid #b7a2fa;
+    background-color: #ffaee2;
+    img {
+      @width : 100px;
+      @height : 100px;
+      width : @width;
+      height : @height;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -(@width / 2);
+      margin-top: -(@height / 2);
+    }
+  }
+  &.pressed {
+    div {
+      background-color: #ccc !important;
+    }
+  }
+  &.targetMissed {
+    div {
+      background-color: red !important;
+    }
+  }
+}
+
+.transparent {
+  opacity:0;
+}
+
+#main-menu {
+  text-align:center;
+  position:relative;
+  height:100%;
+  width:100%;
+  div {
+    height:100%;
+    width:100%;
+    position:absolute;
+    top:50%;
+    margin-top:-60px;
+
+    button {
+      display:block;
+      width:200px;
+      height:50px;
+      margin:10px auto;
+    }
+  }
+}
+
+//Portrait
+@media screen and (min-height:1000px) {
+  .pickable-item {
+    height : 33%;
+    width : 50%;
+  }
+}
+// Landscape
+@media screen and (min-width:1000px) {
+  .pickable-item {
+    height : 50%;
+    width : 33%;
+  }
+}
+
