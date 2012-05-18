@@ -30,10 +30,14 @@ require(
   $(document).on("touchmove touchstart touchend", function (e) { e.preventDefault(); });
 
   $(function () {
-    $('#loading').hide();
-    app.mainMenu();
-    document.addEventListener("deviceready", onDeviceReady, false);
-    document.addEventListener("pause", app.mainMenu, false);
+    if (document.location.search.match(/anim/)) {
+      app.animationsMenu();
+    } else {
+      $('#loading').hide();
+      app.mainMenu();
+      document.addEventListener("deviceready", onDeviceReady, false);
+      document.addEventListener("pause", app.mainMenu, false);
+    }
   });
 
   function onDeviceReady() {

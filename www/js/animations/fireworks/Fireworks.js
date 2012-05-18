@@ -17,8 +17,8 @@ define(['animations/fireworks/Firework'], function (Firework) {
       , fireworks = this.fireworks = []
       , context = canvas.getContext('2d');
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+//    canvas.width = window.innerWidth;
+//    canvas.height = window.innerHeight;
 
     this.animate = function() {
       if (!self.animating) {
@@ -32,13 +32,16 @@ define(['animations/fireworks/Firework'], function (Firework) {
       if (drawFireworks()) {
         requestAnimFrame(loop);
       } else {
-        clearContext();
+        context.fillStyle = 'black';
+        context.fillRect(0,0,canvas.width,canvas.height)
         self.animating = false;
       }
     }
 
     function clearContext() {
-      context.clearRect(0, 0, canvas.width, canvas.height);
+      //context.clearRect(0, 0, canvas.width, canvas.height);
+      context.fillStyle = 'rgba(0,0,0,.3)';
+      context.fillRect(0, 0, canvas.width, canvas.height);
     }
 
     function drawFireworks() {

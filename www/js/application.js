@@ -5,10 +5,11 @@ define(
     'alphabet',
     'views/PickableListView',
     'views/MainMenu',
+    'views/AnimationMenu',
     'application/PickableList',
     'animations'
   ],
-  function (alphabet, PickableListView, MainMenu, PickableList,animations) {
+  function (alphabet, PickableListView, MainMenu, AnimationMenu, PickableList,animations) {
     "use strict";
 
     var app = new Backbone.Marionette.Application();
@@ -19,6 +20,10 @@ define(
 
     app.mainMenu = function() {
       app.main.show(new MainMenu());
+    }
+
+    app.animationsMenu = function() {
+      app.main.show(new AnimationMenu());
     }
 
     app.newGame = function(){
@@ -33,7 +38,13 @@ define(
     }
 
     app.vent.on('game:completed',function(){
-      animations.fireworks();
+      var animation;
+      if (Math.random() > .5) {
+        animation = animations.fireworks;
+      } else {
+        animation = animations.starburst;
+      }
+      setTimeout(animation,500);
       setTimeout(app.newGame,6500);
     })
 

@@ -28,6 +28,7 @@ define(['animations/fireworks/Particle','animations/fireworks/util'], function (
       this.cleanupParticles();
       for (var i = 0, l = this.particles.length; i < l; i++) !this.particles[i].expired && this.particles[i].update();
     } else {
+
       this.acc[0] += this.gravity[0];
       this.acc[1] += this.gravity[1];
       this.vel[0] += this.acc[0];
