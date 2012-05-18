@@ -12,7 +12,8 @@ define([], function () {
     alphabet.add({
       id     : letter,
       letter : letter,
-      image  : 'img/alphabet/default.png'
+      image : ''
+//      image  : 'img/alphabet/default.png'
     });
   })
 

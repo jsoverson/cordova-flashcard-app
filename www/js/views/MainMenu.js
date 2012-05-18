@@ -1,4 +1,4 @@
-/*global define*/
+/*global define, Backbone*/
 
 define([], function () {
   "use strict";
@@ -6,8 +6,8 @@ define([], function () {
   var MainMenu = Backbone.Marionette.ItemView.extend({
     events : {
       'click .start' : 'onStartClick',
-      'mousedown'  : 'onSelect',
-      touchstart : 'onSelect',
+      'mousedown .start'  : 'onSelect',
+      'touchstart .start' : 'onSelect',
       'mouseup .start'    : 'onStartClick',
       'touchend .start'   : 'onStartClick'
     },
@@ -18,10 +18,8 @@ define([], function () {
       require('application').newGame();
     },
     onUnselect : function(evt) {
-      evt.preventDefault();
     },
     onSelect : function(evt) {
-      evt.preventDefault();
     }
   });
 

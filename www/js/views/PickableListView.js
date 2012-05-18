@@ -1,4 +1,4 @@
-/*global define*/
+/*global define,_,Backbone*/
 
 define(['views/PickableItemView'], function (PickableItemView) {
   "use strict";
@@ -14,14 +14,15 @@ define(['views/PickableItemView'], function (PickableItemView) {
       this.targetIndex = ~~(Math.random() * this.collection.length);
       var targetChild = this.children[this.collection.at(this.targetIndex).cid];
       targetChild.isTarget = true;
-      targetChild.$el.css({'background':'blue'})
       targetChild.on('targetFound',this.onTargetFound,this);
     },
     onTargetFound : function(targetView) {
-      targetView.fullscreen();
-      _(this.children).each(function(view,index) {
-        if (view !== targetView) view.remove();
+      console.log('targetFound');
+      targetView.positionAbsolute();
+      _(this.children).each(function(view) {
+        if (view !== targetView) view.hide();
       })
+      targetView.fullscreen();
       require('application').vent.trigger('game:completed');
     }
   });

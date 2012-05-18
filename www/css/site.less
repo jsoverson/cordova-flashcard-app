@@ -1,12 +1,47 @@
-@import 'bootstrap/bootstrap.less';
-@import 'bootstrap/responsive.less';
-
-@pickableColor : #a3128c;
-
+//@import 'bootstrap/bootstrap.less';
+//@import 'bootstrap/responsive.less';
+@backgroundColor    : #fff;
+//@backgroundColor    : #fff;
+@borderColor        : #fff;//darken(@backgroundColor,10%);
+@targetMissedColor  : #ffff87;
+@pressedColor       : darken(@backgroundColor,20%);
+@foregroundColor    : #000;
 
 * {
   -webkit-touch-callout: none;
-  -webkit-user-select: none; /* Disable selection/Copy of UIWebView */
+  -webkit-user-select: none;
+  -webkit-backface-visibility: hidden;
+}
+
+@-webkit-keyframes startButton {
+  from {
+    -webkit-box-shadow: 0 0 18px #333;
+    -webkit-transform: scale(1.1,1.1);
+    //-webkit-transform:rotate(-15deg);
+  }
+  50% {
+    -webkit-box-shadow: 0 0 3px #333;
+  -webkit-transform: scale(1,1);
+//-webkit-transform:rotate(15deg);
+  }
+  to {
+    -webkit-box-shadow: 0 0 18px #333;
+    -webkit-transform: scale(1.1,1.1);
+  //-webkit-transform:rotate(-15deg);
+
+  }
+}
+
+@-webkit-keyframes wobble {
+  from {
+    -webkit-transform: rotate(-10deg);
+  }
+  50% {
+  -webkit-transform: rotate(10deg);
+}
+  to {
+    -webkit-transform: rotate(-10deg);
+  }
 }
 
 body,html {
@@ -15,8 +50,19 @@ body,html {
   background-color: #fff;
   height:100%;
   width:100%;
+  background: #000;
+  //overflow:hidden;
 }
 
+#canvas {
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+#resources {
+  display:none;
+}
 #content {
   width:100%;
   height:100%;
@@ -33,26 +79,47 @@ body,html {
   -webkit-transition-property:opacity;
   -webkit-transition-duration:500ms;
 
+
   &.fullscreen {
-    top:0px;
-    left:0px;
-    width:100%;
-    height:100%;
+    -webkit-transition-property:left,top,width,height;
+    -webkit-transition-duration:500ms,500ms,500ms,500ms;
+    -webkit-timing-function:ease-in-out;
+    //top:20% !important;
+    //left:33% !important;
+    //width:100%;
+    //height:100%;
+    div {
+      -webkit-transition-property:text-shadow;
+      -webkit-transition-duration:500ms;
+      -webkit-timing-function:ease-in-out;
+      -webkit-animation: wobble 2s infinite;
+      @text-shadow: #a0f8ff;
+      @shadowWidth:5px;
+      @blur:20px;
+      margin-left:-50%;
+      background:transparent;
+      border: 0;
+      color: rgb(34, 82, 97);
+      text-shadow: @shadowWidth @shadowWidth @blur @text-shadow,
+                  -@shadowWidth @shadowWidth @blur @text-shadow,
+                  -@shadowWidth -@shadowWidth @blur @text-shadow,
+                  @shadowWidth -@shadowWidth @blur @text-shadow;
+    }
   }
   div {
     text-align:center;
     font-size:220px;
     border-radius:5px;
-    color:#aaa;
-    width:94%;
-    height:94%;
+    color:@foregroundColor;
+    width:100%;
+    height:100%;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-left: -47%;
-    margin-top: -47%;
-    border:5px solid #b7a2fa;
-    background-color: #ffaee2;
+    margin-left: -48%;
+    margin-top: -50%;
+    border:1px solid @borderColor;
+    background-color: @backgroundColor;
     img {
       @width : 100px;
       @height : 100px;
@@ -64,15 +131,27 @@ body,html {
       margin-left: -(@width / 2);
       margin-top: -(@height / 2);
     }
+    span {
+      display:block;
+      @width : 200px;
+      @height : 200px;
+      width : @width;
+      height : @height;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -(@width / 2);
+      margin-top: -10px;
+    }
   }
   &.pressed {
     div {
-      background-color: #ccc !important;
+      background-color: @pressedColor !important;
     }
   }
   &.targetMissed {
     div {
-      background-color: red !important;
+      background-color: @targetMissedColor !important;
     }
   }
 }
@@ -91,26 +170,64 @@ body,html {
     width:100%;
     position:absolute;
     top:50%;
-    margin-top:-60px;
+    margin-top:-100px;
 
     button {
-      display:block;
-      width:200px;
-      height:50px;
-      margin:10px auto;
+      &.start {
+        -webkit-animation-name: startButton;
+        -webkit-animation-duration: 3s;
+        -webkit-animation-iteration-count: infinite;
+        width:200px;
+        height:200px;
+        border-radius:500px;
+        font-size:50px;
+        border:4px solid black;
+
+        background: #cf0404; /* Old browsers */
+        background: -moz-radial-gradient(center, ellipse cover,  #cf0404 0%, #ff3019 100%); /* FF3.6+ */
+        background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#cf0404), color-stop(100%,#ff3019)); /* Chrome,Safari4+ */
+        background: -webkit-radial-gradient(center, ellipse cover,  #cf0404 0%,#ff3019 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-radial-gradient(center, ellipse cover,  #cf0404 0%,#ff3019 100%); /* Opera 12+ */
+        background: -ms-radial-gradient(center, ellipse cover,  #cf0404 0%,#ff3019 100%); /* IE10+ */
+        background: radial-gradient(center, ellipse cover,  #cf0404 0%,#ff3019 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf0404', endColorstr='#ff3019',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+      }
     }
   }
 }
 
 //Portrait
-@media screen and (min-height:1000px) {
+@media screen and (height:1024px) {
+  .pickable-item {
+    &.fullscreen {
+      top:33% !important;
+      left:25% !important;
+    }
+  }
+  #main-menu {
+    background: url('../img/Default-Portrait@2x~ipad.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
   .pickable-item {
     height : 33%;
     width : 50%;
   }
 }
 // Landscape
-@media screen and (min-width:1000px) {
+@media screen and (width:1024px) {
+  .pickable-item {
+    &.fullscreen {
+      top:20% !important;
+      left:33% !important;
+    }
+  }
+  #main-menu {
+    background: url('../img/Default-Landscape@2x~ipad.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
   .pickable-item {
     height : 50%;
     width : 33%;

@@ -5,9 +5,10 @@ define(
     'alphabet',
     'views/PickableListView',
     'views/MainMenu',
-    'application/PickableList'
+    'application/PickableList',
+    'animations'
   ],
-  function (alphabet, PickableListView, MainMenu, PickableList) {
+  function (alphabet, PickableListView, MainMenu, PickableList,animations) {
     "use strict";
 
     var app = new Backbone.Marionette.Application();
@@ -32,9 +33,9 @@ define(
     }
 
     app.vent.on('game:completed',function(){
-      setTimeout(app.newGame,5000);
+      animations.fireworks();
+      setTimeout(app.newGame,6500);
     })
-
 
     return app;
   }
