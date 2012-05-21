@@ -5,10 +5,10 @@ define([], function () {
 
   var PickableItemView = Backbone.Marionette.ItemView.extend({
     events : {
-      mousedown : 'onSelect',
-      touchstart : 'onSelect',
-      mouseup    : 'onUnselect',
-      touchend   : 'onUnselect'
+      'mousedown .pickable': 'onSelect',
+      'touchstart .pickable': 'onSelect',
+      'mouseup .pickable' : 'onUnselect',
+      'touchend .pickable'  : 'onUnselect'
     },
     tagName : 'div',
     className : 'pickable-item',

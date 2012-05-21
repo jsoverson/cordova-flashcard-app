@@ -22,7 +22,7 @@ define(
       app.main.show(new MainMenu());
     }
 
-    app.animationsMenu = function() {
+    app.animationMenu = function() {
       app.main.show(new AnimationMenu());
     }
 

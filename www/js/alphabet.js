@@ -17,5 +17,7 @@ define([], function () {
     });
   })
 
+  alphabet.class = 'alphabet text'
+
   return alphabet;
 });

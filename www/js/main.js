@@ -31,22 +31,21 @@ require(
 
   $(function () {
     if (document.location.search.match(/anim/)) {
-      app.animationsMenu();
+      app.animationMenu();
     } else {
       $('#loading').hide();
-      app.mainMenu();
+      //app.mainMenu();
+      app.newGame();
       document.addEventListener("deviceready", onDeviceReady, false);
       document.addEventListener("pause", app.mainMenu, false);
     }
   });
 
   function onDeviceReady() {
-    setTimeout(function(){cordova.exec(null, null, "SplashScreen", "hide", [])},1000);
-    var my_media = new Media('audio/welcome.m4a',
-      function() {},
-      function(err) {console.log("playAudio():Audio Error: "+err);}
-    );
-    //my_media.play();
+    setTimeout(function(){cordova.exec(null, null, "SplashScreen", "hide", [])},500);
+    return;
+    var welcome = new Media('',function() {},function(err) {});
+    //welcome.play();
   }
 })
 
