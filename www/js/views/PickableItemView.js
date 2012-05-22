@@ -1,28 +1,30 @@
-/*global define*/
+/*global define, Backbone*/
 
-define([], function () {
+define(['application','trak'], function (app,trak) {
   "use strict";
 
   var PickableItemView = Backbone.Marionette.ItemView.extend({
     events : {
-      'mousedown .pickable': 'onSelect',
-      'touchstart .pickable': 'onSelect',
-      'mouseup .pickable' : 'onUnselect',
-      'touchend .pickable'  : 'onUnselect'
+      'mousedown .pickable'   : 'onDown',
+      'touchstart .pickable'  : 'onDown',
+      'mouseup .pickable'     : 'onSelect',
+      'touchend .pickable'    : 'onSelect'
     },
     tagName : 'div',
     className : 'pickable-item',
     template : '#pickable-item-template',
-    onUnselect : function(evt) {
-      this.$el.unbind();
-      this.$el.removeClass('pressed');
+    onSelect : function(evt) {
+      var app = require('application');
+      app.vent.trigger('pickable:click', this);
+      this.$el.unbind().removeClass('pressed');
       if (this.isTarget) {
+        app.vent.trigger('pickable:targetClick', this);
         this.trigger('targetFound',this);
       } else {
         this.$el.addClass('targetMissed transparent');
       }
     },
-    onSelect : function(evt) {
+    onDown : function(evt) {
       this.$el.addClass('pressed')
     },
     hide : function(){

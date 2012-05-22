@@ -1,12 +1,14 @@
 //@import 'bootstrap/bootstrap.less';
 //@import 'bootstrap/responsive.less';
+
+@import 'mixins.less';
+
 @backgroundColor    : #fff;
-//@backgroundColor    : #fff;
-@borderColor        : #f9f9f9;//darken(@backgroundColor,10%);
+@borderColor        : darken(@backgroundColor,10%);
 @targetMissedColor  : #ffff87;
 @pressedColor       : darken(@backgroundColor,20%);
-@foregroundColor    : #f9f9f9;
-@canvasBackground : #ddd;
+@foregroundColor    : #0c0c0c;
+@canvasBackground   : #000;
 
 * {
   -webkit-touch-callout: none;
@@ -45,9 +47,8 @@
 }
 
 body,html {
+  .fullsize;
   background-color: transparent;
-  height:100%;
-  width:100%;
   overflow:hidden;
 }
 
@@ -61,130 +62,107 @@ body,html {
 
 #resources { display:none; }
 #content {
-  width:100%;
-  height:100%;
+  .fullsize;
 }
 
 .pickable-list {
-  width:100%;
-  height:100%;
-}
+  .fullsize;
+  &.reward.balloon {
 
-.pickable-item {
-  float:left;
-  position:relative;
-  -webkit-transition-property:opacity;
-  -webkit-transition-duration:500ms;
-  &.fullscreen {
-    -webkit-transition-property:left,top,width,height;
-    -webkit-transition-duration:500ms,500ms,500ms,500ms;
-    -webkit-timing-function:ease-in-out;
-    div {
-      -webkit-transition-property:text-shadow;
-      -webkit-transition-duration:500ms;
-      -webkit-timing-function:ease-in-out;
-      -webkit-animation: wobble 2s infinite;
-      margin-left:-50%;
+    .pickable {
       background:transparent;
-      border: 0;
-      color: rgb(34, 82, 97);
-      @text-shadow: #a0f8ff; @shadowWidth:5px; @blur:20px;
-      text-shadow: @shadowWidth @shadowWidth @blur @text-shadow,
-                  -@shadowWidth @shadowWidth @blur @text-shadow,
-                  -@shadowWidth -@shadowWidth @blur @text-shadow,
-                   @shadowWidth -@shadowWidth @blur @text-shadow;
+      border:0;
+      canvas {
+        .center-absolute(200px,200px);
+        -webkit-animation: wobble 2s infinite;
+
+      }
     }
   }
-  .pickable {
-    text-align:center;
-    font-size:220px;
-    border-radius:5px;
-    color:@foregroundColor;
-    width:94%;
-    height:94%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -47%;
-    margin-top: -47%;
-    border:10px solid @borderColor;
-    border-radius:10px;
-    background-color: @backgroundColor;
-    img {
-      @width : 100px;
-      @height : 100px;
-      width : @width;
-      height : @height;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-left: -(@width / 2);
-      margin-top: -(@height / 2);
+  .pickable-item {
+    float:left;
+    position:relative;
+    -webkit-transition-property:opacity;
+    -webkit-transition-duration:500ms;
+    &.fullscreen {
+      -webkit-transition-property:left,top,width,height;
+      -webkit-transition-duration:500ms,500ms,500ms,500ms;
+      -webkit-timing-function:ease-in-out;
+      .pickable {
+        -webkit-animation: wobble 2s infinite;
+        margin-left:-40%;
+        background:transparent;
+        border: 0;
+        span {
+          -webkit-transition-property:text-shadow;
+          -webkit-transition-duration:500ms;
+          -webkit-timing-function:ease-in-out;
+          color: rgb(34, 82, 97);
+          .glow(#a0f8ff, 5px, 20px);
+        }
+      }
     }
-    span {
-      position:relative;
-      top:20%;
-      line-height:220px;
+    .pickable {
+      .center-absolute(80%,80%);
+      text-align:center;
       font-size:220px;
+      border-radius:5px;
+      color:@foregroundColor;
+      border:10px solid @borderColor;
+      border-radius:10px;
+      background-color: @backgroundColor;
+      img {
+        .center-absolute(100px,100px);
+      }
+      span {
+        display:block;
+        .center-absolute(200px,200px);
+        line-height:200px;
+        font-size:220px;
+      }
     }
-  }
-  &.pressed {
-    div {
-      background-color: @pressedColor !important;
+    &.pressed {
+      .pickable {
+        background-color: @pressedColor !important;
+      }
     }
-  }
-  &.targetMissed {
-    div {
-      background-color: @targetMissedColor !important;
+    &.targetMissed {
+      .pickable {
+        background-color: @targetMissedColor !important;
+      }
     }
   }
 }
 
-.transparent {
-  opacity:0;
-}
 
 #main-menu {
+  .fullsize;
   text-align:center;
   background-size: contain;
   background-repeat: no-repeat;
   position:relative;
-  height:100%;
-  width:100%;
   div {
-    height:100%;
-    width:100%;
+    .fullsize;
     position:absolute;
     top:50%;
     margin-top:-100px;
 
     button {
       &.start {
-        -webkit-animation-name: startButton;
-        -webkit-animation-duration: 3s;
-        -webkit-animation-iteration-count: infinite;
+        -webkit-animation: startButton 3s infinite;
         width:200px;
         height:200px;
         border-radius:500px;
         font-size:50px;
         border:4px solid black;
-
-        background: #cf0404; /* Old browsers */
-        background: -moz-radial-gradient(center, ellipse cover,  #cf0404 0%, #ff3019 100%); /* FF3.6+ */
-        background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#cf0404), color-stop(100%,#ff3019)); /* Chrome,Safari4+ */
-        background: -webkit-radial-gradient(center, ellipse cover,  #cf0404 0%,#ff3019 100%); /* Chrome10+,Safari5.1+ */
-        background: -o-radial-gradient(center, ellipse cover,  #cf0404 0%,#ff3019 100%); /* Opera 12+ */
-        background: -ms-radial-gradient(center, ellipse cover,  #cf0404 0%,#ff3019 100%); /* IE10+ */
-        background: radial-gradient(center, ellipse cover,  #cf0404 0%,#ff3019 100%); /* W3C */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf0404', endColorstr='#ff3019',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
+        .radial-gradient(#cf0404,#ff3019);
       }
     }
   }
 }
 
 //Portrait
-@media screen and (height:1024px) {
+@media screen and (min-height:1000px) and (max-width:800px) {
   .pickable-item {
     &.fullscreen {
       top:33.3% !important;
@@ -200,7 +178,7 @@ body,html {
   }
 }
 // Landscape
-@media screen and (width:1024px) {
+@media screen and (min-width:1000px) and (max-height:800px) {
   .pickable-item {
     &.fullscreen {
       top:20% !important;

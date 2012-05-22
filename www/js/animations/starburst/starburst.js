@@ -12,13 +12,12 @@ define([], function () {
         , lightness : 50
         , alpha : 0
         }
-      , width = canvas.width
-      , height = canvas.height
+      , dim = { width : canvas.width, height : canvas.height}
       , degree = (2 * Math.PI / 360)
       , circumference = 2 * Math.PI
       , rotation = degree / 60
-      , center = [width * .5,height * .5]
-      , radius = Math.max(width, height)
+      , center = [dim.width * .5, dim.height * .5]
+      , radius = Math.sqrt(dim.width * dim.width + dim.height * dim.height)
       , rays = 20;
 
     this.getBackgroundColor = function() { return 'rgb(0,0,0)'; }
@@ -39,6 +38,9 @@ define([], function () {
     }
 
     function animationLoop() {
+      dim.width = canvas.width;   // reset each loop in case we changed orientation
+      dim.height = canvas.height;
+      center = [dim.width * .5, dim.height * .5]
       self.clear();
       self.render();
       if (self.isStopping && --self.ttl < 0) self.animating = false;
@@ -48,7 +50,7 @@ define([], function () {
 
     this.clear = function() {
       context.fillStyle = self.getBackgroundColor();
-      context.fillRect(0,0,width,height);
+      context.fillRect(0,0,dim.width,dim.height);
     }
 
     this.stop = function() {

@@ -2,14 +2,16 @@
 
 define(
   [
-    'alphabet',
+    'trak',
+    'datasource/alphabet',
     'views/PickableListView',
     'views/MainMenu',
     'views/AnimationMenu',
     'application/PickableList',
-    'animations'
+    'animations',
+    'rewards'
   ],
-  function (alphabet, PickableListView, MainMenu, AnimationMenu, PickableList,animations) {
+  function (trak, datasource, PickableListView, MainMenu, AnimationMenu, PickableList,animations,rewards) {
     "use strict";
 
     var app = new Backbone.Marionette.Application();
@@ -26,18 +28,34 @@ define(
       app.main.show(new AnimationMenu());
     }
 
+    var numGames = 0;
     app.newGame = function(){
-      var gameList = new PickableList(
-        _(alphabet.shuffle()).head(6)
-      );
+      clearTimeout(app.newGameTimer);
+      trak.event('game','new');
 
-      var gameField = new PickableListView({
-        collection : gameList
-      });
+      var gameField;
+      if (numGames > 0 && numGames % 4 === 0) {
+        gameField = rewards.balloonGame();
+      } else {
+        var gameList = new PickableList(
+          _(datasource.shuffle()).head(6)
+        );
+
+        gameField = new PickableListView({
+          collection : gameList
+        });
+      }
+
       app.main.show(gameField);
     }
 
+    app.resume = function() {
+      trak.event('game','resume');
+      app.mainMenu();
+    }
+
     app.vent.on('game:completed',function(){
+      numGames++;
       var animation;
       if (Math.random() > .5) {
         animation = animations.fireworks;
@@ -45,8 +63,32 @@ define(
         animation = animations.starburst;
       }
       setTimeout(animation,500);
-      setTimeout(app.newGame,6500);
+      app.newGameTimer = setTimeout(app.newGame,6500);
     })
+
+    app.vent.on('reward:completed',function(){
+      numGames++;
+      app.newGameTimer = setTimeout(app.newGame,500);
+    })
+
+    var trackableEvents = [
+      'game:completed',
+      'reward:completed',
+      'pickable:click',
+      'pickable:targetClick'
+    ]
+
+    _(trackableEvents).each(trackEvent);
+
+    function trackEvent(eventName) {
+      var firstSplit = eventName.indexOf(':')
+        , target = eventName.substring(0,firstSplit)
+        , event = eventName.substring(firstSplit+1,eventName.length);
+
+      app.vent.on(eventName,function(){
+        trak.event(target,event);
+      })
+    }
 
     return app;
   }
