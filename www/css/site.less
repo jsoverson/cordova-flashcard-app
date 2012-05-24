@@ -46,10 +46,17 @@
   }
 }
 
-body,html {
+html {
+  background-color: @canvasBackground;
+  .fullsize;
+  overflow:hidden;
+}
+body {
   .fullsize;
   background-color: transparent;
-  overflow:hidden;
+}
+
+body,html {
 }
 
 #canvas {
@@ -82,8 +89,8 @@ body,html {
   .pickable-item {
     float:left;
     position:relative;
-    -webkit-transition-property:opacity;
-    -webkit-transition-duration:500ms;
+    -webkit-transition-property:opacity,top,left;
+    -webkit-transition-duration:500ms,500ms,500ms;
     &.fullscreen {
       -webkit-transition-property:left,top,width,height;
       -webkit-transition-duration:500ms,500ms,500ms,500ms;

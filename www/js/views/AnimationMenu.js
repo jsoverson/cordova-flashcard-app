@@ -1,4 +1,4 @@
-/*global define, Backbone*/
+/*global define, Backbone, _*/
 
 define(['animations'], function (animations) {
   "use strict";
@@ -16,8 +16,8 @@ define(['animations'], function (animations) {
     render : function() {
       var view = this;
       _(animations).each(function(val,key) {
-        view.$el.append($('<button>').addClass('animation').data('anim',key).text(key))
-      })
+        view.$el.append($('<button>').addClass('animation').data('anim',key).text(key));
+      });
       //animations.fireworks();
     },
     onUnselect : function(evt) {

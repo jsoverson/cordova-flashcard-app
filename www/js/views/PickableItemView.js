@@ -1,4 +1,4 @@
-/*global define, Backbone*/
+/*global require, define, Backbone*/
 
 define(['application','trak'], function (app,trak) {
   "use strict";
@@ -25,7 +25,7 @@ define(['application','trak'], function (app,trak) {
       }
     },
     onDown : function(evt) {
-      this.$el.addClass('pressed')
+      this.$el.addClass('pressed');
     },
     hide : function(){
       this.$el.hide();

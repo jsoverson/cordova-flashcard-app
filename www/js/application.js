@@ -1,4 +1,4 @@
-/*global define*/
+/*global define, Backbone*/
 
 define(
   [
@@ -7,11 +7,10 @@ define(
     'views/PickableListView',
     'views/MainMenu',
     'views/AnimationMenu',
-    'application/PickableList',
     'animations',
     'rewards'
   ],
-  function (trak, datasource, PickableListView, MainMenu, AnimationMenu, PickableList,animations,rewards) {
+  function (trak, datasource, PickableListView, MainMenu, AnimationMenu,animations,rewards) {
     "use strict";
 
     var app = new Backbone.Marionette.Application();
@@ -22,11 +21,11 @@ define(
 
     app.mainMenu = function() {
       app.main.show(new MainMenu());
-    }
+    };
 
     app.animationMenu = function() {
       app.main.show(new AnimationMenu());
-    }
+    };
 
     var numGames = 0;
     app.newGame = function(){
@@ -34,60 +33,70 @@ define(
       trak.event('game','new');
 
       var gameField;
-      if (numGames > 0 && numGames % 4 === 0) {
+      if (++numGames % 5 === 0) {
         gameField = rewards.balloonGame();
       } else {
-        var gameList = new PickableList(
-          _(datasource.shuffle()).head(6)
-        );
-
-        gameField = new PickableListView({
-          collection : gameList
-        });
+        var pickableItems = datasource.shuffle().slice(0,6);
+        var gameList = new Backbone.Collection(pickableItems);
+        gameField = new PickableListView({ collection : gameList });
       }
 
       app.main.show(gameField);
-    }
+    };
 
     app.resume = function() {
-      trak.event('game','resume');
       app.mainMenu();
+    };
+
+    app.vent.on('app:start', function() {
+      app.mainMenu();
+    });
+
+
+    app.vent.on('game:new',app.newGame);
+
+    function delayNewGame(millis) {
+      app.newGameTimer = setTimeout(function(){
+        app.vent.trigger('game:new');
+      }, millis);
     }
 
     app.vent.on('game:completed',function(){
-      numGames++;
       var animation;
-      if (Math.random() > .5) {
+      if (Math.random() > 0.5) {
         animation = animations.fireworks;
       } else {
         animation = animations.starburst;
       }
+
+      // Wait for CSS animations to complete for performance
       setTimeout(animation,500);
-      app.newGameTimer = setTimeout(app.newGame,6500);
-    })
+      delayNewGame(6500);
+    });
 
     app.vent.on('reward:completed',function(){
-      numGames++;
-      app.newGameTimer = setTimeout(app.newGame,500);
-    })
+      delayNewGame(500);
+    });
 
-    var trackableEvents = [
+    // List of events we want to track for analytics
+    [
       'game:completed',
+      'game:new',
+      'app:start',
+      'app:resume',
       'reward:completed',
       'pickable:click',
       'pickable:targetClick'
-    ]
-
-    _(trackableEvents).each(trackEvent);
+    ].forEach(trackEvent);
 
     function trackEvent(eventName) {
-      var firstSplit = eventName.indexOf(':')
-        , target = eventName.substring(0,firstSplit)
-        , event = eventName.substring(firstSplit+1,eventName.length);
+      var firstSplit = eventName.indexOf(':'),
+          target = eventName.substring(0,firstSplit),
+          event = eventName.substring(firstSplit+1,eventName.length);
 
       app.vent.on(eventName,function(){
         trak.event(target,event);
-      })
+      });
     }
 
     return app;

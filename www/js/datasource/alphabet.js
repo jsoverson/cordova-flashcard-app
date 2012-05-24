@@ -1,4 +1,4 @@
-/*global define*/
+/*global define, Backbone, _*/
 
 define([], function () {
   "use strict";
@@ -8,16 +8,15 @@ define([], function () {
   var charCodeStart = 65;
 
   _(26).times(function(index) {
-    var letter = String.fromCharCode(charCodeStart + index)
+    var letter = String.fromCharCode(charCodeStart + index);
     alphabet.add({
       id     : letter,
       letter : letter,
       image : ''
-//      image  : 'img/alphabet/default.png'
     });
-  })
+  });
 
-  alphabet.class = 'alphabet text'
+  alphabet.className = 'alphabet text';
 
   return alphabet;
 });

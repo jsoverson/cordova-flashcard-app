@@ -1,4 +1,4 @@
-/*global define, Media*/
+/*global define, Media, Backbone, _*/
 
 define(
   [
@@ -10,9 +10,9 @@ define(
 
     return {
       balloonGame : function() {
-        var colors = new Backbone.Collection(_(randomColors.shuffle()).head(6))
+        var colors = new Backbone.Collection(_(randomColors.shuffle()).head(6));
         return new BalloonGame({collection : colors});
       }
-    }
+    };
   }
 );

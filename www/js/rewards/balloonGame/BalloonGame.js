@@ -1,4 +1,4 @@
-/*global define,_,Backbone*/
+/*global require, Media, define,_,Backbone*/
 
 define(['views/PickableListView'], function (PickableListView) {
   "use strict";
@@ -20,10 +20,13 @@ define(['views/PickableListView'], function (PickableListView) {
       this.context = this.canvas.getContext('2d');
       this.context.fillStyle = this.model.toString();
       this.context.fillRect(0,0,200,200);
-      this.context.globalCompositeOperation = 'darker'
+      this.context.globalCompositeOperation = 'darker';
       this.context.drawImage(img,0,0,200,200);
     },
     onSelect : function(evt) {
+    },
+    onDown : function(evt) {
+      this.$el.unbind();
       require('application').vent.trigger('pickable:click', this);
       if (window.Media) {
         var popSound = new Media('audio/balloon-pop.wav', function () {}, function (err) {});
@@ -34,8 +37,6 @@ define(['views/PickableListView'], function (PickableListView) {
       this.context.drawImage(img,0,0,200,200);
       this.$el.addClass('transparent');
     },
-    onDown : function(evt) {
-    },
     hide : function(){
       this.$el.hide();
     }
@@ -44,7 +45,7 @@ define(['views/PickableListView'], function (PickableListView) {
   var BalloonGame = PickableListView.extend({
     itemView : BalloonView,
     initialize : function(){
-      this.$el.addClass('reward balloon')
+      this.$el.addClass('reward balloon');
       require('application').vent.on('pickable:click',this.onChildClick,this);
     },
     onClose : function() {
@@ -54,7 +55,7 @@ define(['views/PickableListView'], function (PickableListView) {
       childView.popped = true;
       var allPopped = true;
       for (var child in this.children) {
-        allPopped = allPopped && this.children[child].popped
+        allPopped = allPopped && this.children[child].popped;
       }
       if (allPopped) require('application').vent.trigger('reward:completed');
     }

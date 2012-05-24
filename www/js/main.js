@@ -1,10 +1,12 @@
-/* global require, Media, cordova, ENV */
+/*global require, cordova, Media, ENV */
 
 require.config({
 
 });
 
+// paulIrish();
 window.requestAnimFrame = (function(){
+  "use strict";
   return  window.requestAnimationFrame       ||
     window.webkitRequestAnimationFrame ||
     window.mozRequestAnimationFrame    ||
@@ -22,46 +24,32 @@ require(
     'vendor/order!vendor/backbone',
     'vendor/order!vendor/backbone.marionette',
     'vendor/order!application',
-    'VERSION',
-    'trak'
+    'trak',
+    'VERSION'
   ],function(){
     "use strict";
 
-    var app   = require('application'),
-      trak    = require('trak'),
-      VERSION = require('VERSION');
+    var app     = require('application'),
+        trak    = require('trak'),
+        VERSION = require('VERSION');
 
     $(document).on("touchmove touchstart touchend", function (e) { e.preventDefault(); });
-    $(document).on("resize", recordOrientation);
-
-    function recordOrientation() {
-      if (document.width > document.height) {
-        trak.event('orientationChange', 'landscape');
-      } else {
-        trak.event('orientationChange', 'portrait');
-      }
-    }
 
     $(function () {
-      recordOrientation();
       trak.view('alphabet-' + VERSION.toString());
-      trak.event('game', 'start');
-
-      if (document.location.search.match(/anim/)) {
-        app.animationMenu();
-      } else {
-//      app.mainMenu();
-        app.newGame();
-        document.addEventListener("deviceready", onDeviceReady, false);
-        document.addEventListener("resume", app.resume, false);
-      }
+      app.vent.trigger('app:start');
+      document.addEventListener("deviceready", onDeviceReady, false);
+      document.addEventListener("resume", app.resume, false);
     });
 
     function onDeviceReady() {
-      setTimeout(function () {cordova.exec(null, null, "SplashScreen", "hide", [])}, 500);
-//      var welcome = new Media('', function () {}, function (err) {});
-//      welcome.play();
+      // Deferring to let UI catch up, if necessary
+      setTimeout(hideSplashScreen, 0);
+    }
+
+    function hideSplashScreen() {
+      cordova.exec(null, null, "SplashScreen", "hide", []);
     }
   }
-)
+);
 

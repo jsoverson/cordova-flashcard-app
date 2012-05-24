@@ -3,19 +3,18 @@
 define(['animations/fireworks/util'], function (util) {
   "use strict";
 
-  var Particle = function(pos,hue) {
+  var Particle = function(pos) {
     this.pos = pos;
-    this.hue = hue;
     this.expired = false;
-    this.gravity = [0,.01];
+    this.acc = [0,0];
+    this.gravity = [0, 0.01];
     this.ttl = ~~(Math.random() * 40) + 10;
-  }
+  };
 
-  Particle.prototype.launch = function(vel, acc) {
+  Particle.prototype.launch = function(vel) {
     this.vel = vel || [0,0];
-    this.acc = acc || [0,0];
     return this;
-  }
+  };
 
   Particle.prototype.update = function(){
     if (this.expired) return this;
@@ -29,13 +28,7 @@ define(['animations/fireworks/util'], function (util) {
     if (--this.ttl <= 0) this.expired = true;
 
     return this;
-  }
-
-  Particle.prototype.sparkleAndFade = function() {
-  }
-
-  Particle.prototype.render = function(context) {
-  }
+  };
 
   return Particle;
 });

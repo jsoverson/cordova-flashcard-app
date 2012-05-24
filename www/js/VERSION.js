@@ -10,5 +10,5 @@ define([], function () {
     toString : function() {
       return [this.major,this.minor,this.patch].join('.');
     }
-  }
+  };
 });

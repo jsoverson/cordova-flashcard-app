@@ -1,4 +1,5 @@
 /*global define, Media*/
+/*jshint expr:true, loopfunc:true*/
 
 define(
   [
@@ -14,7 +15,7 @@ define(
       canvas = document.getElementById('canvas');
       context = canvas.getContext('2d');
       resetDimensions();
-      $(window).on('resize',resetDimensions);
+      $(window).on('resize orientationchange',resetDimensions);
     });
 
     function resetDimensions() {
@@ -25,7 +26,7 @@ define(
     return {
       starburst : function() {
         var burst = new Starburst(canvas);
-        setTimeout(burst.stop,4000)
+        setTimeout(burst.stop,4000);
       },
       test : function() {
         context.fillStyle = 'red';
@@ -37,8 +38,9 @@ define(
 
         try {
           pop = new Media('audio/pop.mp3',function() {},
-            function(err) {console.log("playAudio():Audio Error: "+err);}
+            function(err) {}
           );
+          pop.prepare();
         } catch(e) {}
 
         while (i--) {
@@ -47,13 +49,13 @@ define(
                 pos : [window.innerWidth / 2, window.innerHeight],
                 vel : [Math.random() * 6 - 3, -(Math.random() * 5) - 12],
                 hue : Math.random() * 255,
-                onExplode : function(){pop && pop.play()}
-              })
+                onExplode : function(){pop && pop.play();}
+              });
             },
             (Math.random() * 2) * 1000
-          )
+          );
         }
       }
-    }
+    };
   }
 );

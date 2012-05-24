@@ -35,5 +35,5 @@ define([], function () {
     getAngleDegrees : function(angle) {
       return angle * 180 / Math.PI;
     }
-  }
+  };
 });

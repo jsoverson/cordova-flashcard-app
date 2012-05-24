@@ -1,31 +1,23 @@
-/*global define*/
+/*global define, requestAnimFrame*/
 
-
-if (!window.requestAnimFrame) window.requestAnimFrame =
-    window.requestAnimationFrame       ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame    ||
-    window.oRequestAnimationFrame      ||
-    window.msRequestAnimationFrame     ||
-    function( callback ){ window.setTimeout(callback, 1000 / 60); };
 
 define(['animations/fireworks/Firework'], function (Firework) {
   "use strict";
 
   function Fireworks(canvas) {
-    var self = this
-      , fireworks = this.fireworks = []
-      , context = canvas.getContext('2d');
+    var self = this,
+        fireworks = this.fireworks = [],
+        context = canvas.getContext('2d');
 
 //    canvas.width = window.innerWidth;
 //    canvas.height = window.innerHeight;
 
-    this.animate = function() {
+    self.animate = function() {
       if (!self.animating) {
         self.animating = true;
         loop();
       }
-    }
+    };
 
     function loop() {
       clearContext();
@@ -33,7 +25,7 @@ define(['animations/fireworks/Firework'], function (Firework) {
         requestAnimFrame(loop);
       } else {
         context.fillStyle = 'black';
-        context.fillRect(0,0,canvas.width,canvas.height)
+        context.fillRect(0,0,canvas.width,canvas.height);
         self.animating = false;
       }
     }
@@ -63,7 +55,7 @@ define(['animations/fireworks/Firework'], function (Firework) {
     firework.launch(options.vel);
     this.fireworks.push(firework);
     this.animate();
-  }
+  };
 
   return Fireworks;
 });

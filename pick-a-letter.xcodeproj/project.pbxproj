@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		402BCC9C156D8641000DB4E0 /* CDVWebInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 402BCC98156D8641000DB4E0 /* CDVWebInspector.m */; };
+		402BCC9D156D8641000DB4E0 /* cordova-WebInspector.js in Sources */ = {isa = PBXBuildFile; fileRef = 402BCC99156D8641000DB4E0 /* cordova-WebInspector.js */; };
+		402BCC9E156D8641000DB4E0 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 402BCC9A156D8641000DB4E0 /* LICENSE */; };
+		402BCC9F156D8641000DB4E0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 402BCC9B156D8641000DB4E0 /* README.md */; };
 		406DBB75155E24D700656D44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 406DBB74155E24D700656D44 /* Foundation.framework */; };
 		406DBB77155E24D700656D44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 406DBB76155E24D700656D44 /* UIKit.framework */; };
 		406DBB79155E24D700656D44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 406DBB78155E24D700656D44 /* CoreGraphics.framework */; };
@@ -48,6 +52,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		402BCC98156D8641000DB4E0 /* CDVWebInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVWebInspector.m; sourceTree = "<group>"; };
+		402BCC99156D8641000DB4E0 /* cordova-WebInspector.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "cordova-WebInspector.js"; sourceTree = "<group>"; };
+		402BCC9A156D8641000DB4E0 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		402BCC9B156D8641000DB4E0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		406DBB70155E24D700656D44 /* pick-a-letter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pick-a-letter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		406DBB74155E24D700656D44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		406DBB76155E24D700656D44 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -126,6 +134,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		402BCC97156D8641000DB4E0 /* WebInspector */ = {
+			isa = PBXGroup;
+			children = (
+				402BCC98156D8641000DB4E0 /* CDVWebInspector.m */,
+				402BCC99156D8641000DB4E0 /* cordova-WebInspector.js */,
+				402BCC9A156D8641000DB4E0 /* LICENSE */,
+				402BCC9B156D8641000DB4E0 /* README.md */,
+			);
+			path = WebInspector;
+			sourceTree = "<group>";
+		};
 		406DBB62155E24D700656D44 = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +294,7 @@
 		406DBBC3155E24D700656D44 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				402BCC97156D8641000DB4E0 /* WebInspector */,
 				406DBBC4155E24D700656D44 /* README */,
 			);
 			name = Plugins;
@@ -357,6 +377,8 @@
 				40BCBEE815632C8800D23266 /* Default-Landscape~ipad.png in Resources */,
 				40BCBEEA1563882A00D23266 /* Default@2x.png in Resources */,
 				40BCBEEC1563882E00D23266 /* Default.png in Resources */,
+				402BCC9E156D8641000DB4E0 /* LICENSE in Resources */,
+				402BCC9F156D8641000DB4E0 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +408,8 @@
 				406DBB95155E24D700656D44 /* main.m in Sources */,
 				406DBBBD155E24D700656D44 /* AppDelegate.m in Sources */,
 				406DBBC0155E24D700656D44 /* MainViewController.m in Sources */,
+				402BCC9C156D8641000DB4E0 /* CDVWebInspector.m in Sources */,
+				402BCC9D156D8641000DB4E0 /* cordova-WebInspector.js in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

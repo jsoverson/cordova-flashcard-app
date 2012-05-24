@@ -1,4 +1,4 @@
-/*global define, Backbone*/
+/*global require,define, Backbone*/
 
 define([], function () {
   "use strict";

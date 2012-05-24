@@ -1,7 +1,9 @@
-/*global define,_,Backbone*/
+/*global require, define, _, Backbone*/
 
 define(['views/PickableItemView'], function (PickableItemView) {
   "use strict";
+
+  var app;
 
   var PickableView = Backbone.Marionette.CompositeView.extend({
     tagName : 'div',
@@ -9,8 +11,9 @@ define(['views/PickableItemView'], function (PickableItemView) {
     template : '#pickable-list',
     itemView : PickableItemView,
     initialize : function() {
-      require('application').vent.on('pickable:targetClick',this.onTargetFound,this);
-      require('application').vent.on('pickable:click',this.onChildClick,this);
+      app = require('application');
+      app.vent.on('pickable:targetClick',this.onTargetFound,this);
+      app.vent.on('pickable:click',this.onChildClick,this);
     },
     onRender : function(){
       this.targetIndex = ~~(Math.random() * this.collection.length);
@@ -24,13 +27,13 @@ define(['views/PickableItemView'], function (PickableItemView) {
       targetView.positionAbsolute();
       _(this.children).each(function(view) {
         if (view !== targetView) view.hide();
-      })
+      });
       targetView.fullscreen();
       require('application').vent.trigger('game:completed');
     },
     onClose : function() {
-      require('application').vent.off('pickable:targetClick',this.onTargetFound,this);
-      require('application').vent.off('pickable:click',this.onChildClick,this);
+      app.vent.off('pickable:targetClick',this.onTargetFound,this);
+      app.vent.off('pickable:click',this.onChildClick,this);
     }
   });
 
