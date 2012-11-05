@@ -107,7 +107,6 @@
 		DAD04B3716478B74000B0AC2 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		DAD04B3916478B7A000B0AC2 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		DAD04B3B16478B7F000B0AC2 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
-		DAD04B3D16478C3D000B0AC2 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +175,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				DAD04B3D16478C3D000B0AC2 /* Default-Portrait~ipad.png */,
 				DAD04B3B16478B7F000B0AC2 /* Default-Landscape@2x~ipad.png */,
 				DAD04B3916478B7A000B0AC2 /* Default-Landscape~ipad.png */,
 				DAD04B3716478B74000B0AC2 /* Default-Portrait@2x~ipad.png */,
