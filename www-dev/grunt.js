@@ -9,6 +9,7 @@ module.exports = function (grunt) {
     },
     lint   : {
       files : [
+        'grunt.js',
         'js/*.js',
         'js/animations/*.js',
         'js/datasource/*.js',
