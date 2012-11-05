@@ -3,7 +3,7 @@
 
 define(
   [
-    'jquery',
+    'zepto',
     'animations/fireworks/Fireworks',
     'animations/starburst/Starburst'
   ],
@@ -12,7 +12,7 @@ define(
 
     var canvas,context;
 
-    $(function(){
+    $(function () {
       canvas = document.getElementById('canvas');
       context = canvas.getContext('2d');
       resetDimensions();

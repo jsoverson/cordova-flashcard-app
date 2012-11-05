@@ -5,9 +5,11 @@ require.config({
   locale : 'en_US',
   paths  : {
     'jquery'     : 'vendor/jquery-1.7.1.min',
+    'zepto'      : 'vendor/zepto',
     'underscore' : 'vendor/underscore',
     'backbone'   : 'vendor/backbone',
-    'marionette' : 'vendor/backbone.marionette'
+    'marionette' : 'vendor/backbone.marionette',
+    'deferred'   : 'vendor/deferred'
   },
 
   shim : {
@@ -15,12 +17,24 @@ require.config({
       exports : '_'
     },
     'backbone'   : {
-      deps    : ['jquery', 'underscore'],
+      deps    : ['zepto', 'underscore'],
       exports : 'Backbone'
     },
     'marionette' : {
       deps    : ['backbone'],
       exports : 'Marionette'
+    },
+    'deferred' : {
+      deps : ['underscore'],
+      exports : 'Deferred'
+    },
+    'zepto' : {
+      deps    : ['deferred'],
+      exports : '$',
+      init: function (Deferred) {
+        Deferred.installInto(this.$);
+        return this.$;
+      }
     }
   }
 
@@ -39,7 +53,7 @@ window.requestAnimFrame = (function () {
     };
 })();
 
-require(['jquery', 'application', 'trak', 'VERSION'],
+require(['zepto', 'application', 'trak', 'VERSION'],
   function ($, app, trak, VERSION) {
     "use strict";
 

@@ -31,8 +31,8 @@ define(['marionette','application','trak'], function (Marionette, app,trak) {
       this.$el.hide();
     },
     positionAbsolute : function(){
-      var oldTop  = this.$el.position().top,
-        oldLeft = this.$el.position().left;
+      var oldTop  = this.$el.offset().top,
+        oldLeft = this.$el.offset().left;
       this.el.style.position = 'absolute';
       var topPct = ~~(100 * oldTop / document.height),
           leftPct = ~~(100 * oldLeft / document.width);
