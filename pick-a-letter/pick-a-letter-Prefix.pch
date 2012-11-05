@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'pick-a-letter' target in the 'pick-a-letter' project
-//
-
-#ifdef __OBJC__
-  #import <UIKit/UIKit.h>
-#endif
