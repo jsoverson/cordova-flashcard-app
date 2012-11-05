@@ -1,0 +1,9 @@
+{
+  "name": "pick-a-letter",
+  "description": "Pick A Letter Flashcards",
+  "version": "0.5.0",
+  "dependencies": {
+    "grunt": "latest",
+    "grunt-open": "latest"
+  }
+}
