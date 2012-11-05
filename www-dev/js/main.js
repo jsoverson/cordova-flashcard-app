@@ -9,7 +9,8 @@ require.config({
     'underscore' : 'vendor/underscore',
     'backbone'   : 'vendor/backbone',
     'marionette' : 'vendor/backbone.marionette',
-    'deferred'   : 'vendor/deferred'
+    'deferred'   : 'vendor/deferred',
+    'cordova'    : 'vendor/cordova-2.1.0'
   },
 
   shim : {
@@ -32,6 +33,7 @@ require.config({
       deps    : ['deferred'],
       exports : '$',
       init: function (Deferred) {
+        "use strict";
         Deferred.installInto(this.$);
         return this.$;
       }

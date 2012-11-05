@@ -4,6 +4,9 @@
   "version": "0.5.0",
   "dependencies": {
     "grunt": "latest",
-    "grunt-open": "latest"
+    "grunt-open": "latest",
+    "grunt-requirejs": "latest",
+    "grunt-contrib-copy" : "latest",
+    "grunt-clean" : "latest"
   }
 }
