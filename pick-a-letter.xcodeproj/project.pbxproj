@@ -38,12 +38,10 @@
 		30A0434914DC770100060A13 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434614DC770100060A13 /* Localizable.strings */; };
 		30E1352710E2C1420031B30D /* Cordova.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30E1352610E2C1420031B30D /* Cordova.plist */; };
 		30E5649213A7FCAF007403D8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		DAD04B3416478B4A000B0AC2 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 3088BBBA154F3926009F9C59 /* Default-Portrait~ipad.png */; };
 		DAD04B3616478B67000B0AC2 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD04B3516478B67000B0AC2 /* Default-Portrait~ipad.png */; };
 		DAD04B3816478B74000B0AC2 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD04B3716478B74000B0AC2 /* Default-Portrait@2x~ipad.png */; };
 		DAD04B3A16478B7B000B0AC2 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD04B3916478B7A000B0AC2 /* Default-Landscape~ipad.png */; };
 		DAD04B3C16478B7F000B0AC2 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD04B3B16478B7F000B0AC2 /* Default-Landscape@2x~ipad.png */; };
-		DAD04B3E16478C3D000B0AC2 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD04B3D16478C3D000B0AC2 /* Default-Portrait~ipad.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,8 +108,6 @@
 		DAD04B3916478B7A000B0AC2 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		DAD04B3B16478B7F000B0AC2 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		DAD04B3D16478C3D000B0AC2 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
-		DAD536BF16477B5D00C2FB5E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		DAD536C116477B6200C2FB5E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,8 +181,6 @@
 				DAD04B3916478B7A000B0AC2 /* Default-Landscape~ipad.png */,
 				DAD04B3716478B74000B0AC2 /* Default-Portrait@2x~ipad.png */,
 				DAD04B3516478B67000B0AC2 /* Default-Portrait~ipad.png */,
-				DAD536C116477B6200C2FB5E /* Default@2x.png */,
-				DAD536BF16477B5D00C2FB5E /* Default.png */,
 				301BF56E109A69640062928A /* www */,
 				301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -390,12 +384,10 @@
 				30A0434914DC770100060A13 /* Localizable.strings in Resources */,
 				3088BBC1154F3926009F9C59 /* Default@2x~iphone.png in Resources */,
 				3088BBC2154F3926009F9C59 /* Default~iphone.png in Resources */,
-				DAD04B3416478B4A000B0AC2 /* Default-Portrait~ipad.png in Resources */,
 				DAD04B3616478B67000B0AC2 /* Default-Portrait~ipad.png in Resources */,
 				DAD04B3816478B74000B0AC2 /* Default-Portrait@2x~ipad.png in Resources */,
 				DAD04B3A16478B7B000B0AC2 /* Default-Landscape~ipad.png in Resources */,
 				DAD04B3C16478B7F000B0AC2 /* Default-Landscape@2x~ipad.png in Resources */,
-				DAD04B3E16478C3D000B0AC2 /* Default-Portrait~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
