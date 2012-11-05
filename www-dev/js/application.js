@@ -79,6 +79,16 @@ define(
       delayNewGame(500);
     });
 
+    function trackEvent(eventName) {
+      var firstSplit = eventName.indexOf(':'),
+        target = eventName.substring(0,firstSplit),
+        event = eventName.substring(firstSplit+1,eventName.length);
+
+      app.vent.on(eventName,function(){
+        trak.event(target,event);
+      });
+    }
+
     // List of events we want to track for analytics
     [
       'game:completed',
@@ -89,16 +99,6 @@ define(
       'pickable:click',
       'pickable:targetClick'
     ].forEach(trackEvent);
-
-    function trackEvent(eventName) {
-      var firstSplit = eventName.indexOf(':'),
-          target = eventName.substring(0,firstSplit),
-          event = eventName.substring(firstSplit+1,eventName.length);
-
-      app.vent.on(eventName,function(){
-        trak.event(target,event);
-      });
-    }
 
     return app;
   }

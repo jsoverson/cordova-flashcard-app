@@ -8,7 +8,13 @@ module.exports = function (grunt) {
         '<%= grunt.template.today("yyyy-mm-dd") %> */'
     },
     lint   : {
-      files : ['js/**/*.js', 'spec/**/*.js']
+      files : [
+        'js/*.js',
+        'js/animations/*.js',
+        'js/datasource/*.js',
+        'js/rewards/*.js',
+        'js/views/*.js',
+        'spec/**/*.js']
     },
     watch  : {
       lint : {
@@ -18,7 +24,7 @@ module.exports = function (grunt) {
     },
     jshint : {
       options : {
-        curly   : true,
+        curly   : false,
         eqeqeq  : true,
         immed   : true,
         latedef : true,

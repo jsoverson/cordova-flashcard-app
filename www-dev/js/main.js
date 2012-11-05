@@ -1,4 +1,4 @@
-/*global require, cordova, Media, ENV */
+/*global require, cordova, Media, ENV, window, document */
 
 require.config({
 
@@ -39,8 +39,8 @@ window.requestAnimFrame = (function () {
     };
 })();
 
-require(['application', 'trak', 'VERSION'],
-  function (app, trak, VERSION) {
+require(['jquery', 'application', 'trak', 'VERSION'],
+  function ($, app, trak, VERSION) {
     "use strict";
 
     $(document).on("touchmove touchstart touchend", function (e) { e.preventDefault(); });

@@ -1,6 +1,6 @@
 /*global define, Backbone, _*/
 
-define(['marionette', 'underscore', 'animations'], function (Marionette, _, animations) {
+define(['jquery', 'marionette', 'underscore', 'animations'], function ($, Marionette, _, animations) {
   "use strict";
 
   var MainMenu = Marionette.View.extend({

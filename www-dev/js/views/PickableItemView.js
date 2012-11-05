@@ -1,4 +1,4 @@
-/*global require, define, Backbone*/
+/*global require, define, document*/
 
 define(['marionette','application','trak'], function (Marionette, app,trak) {
   "use strict";

@@ -1,12 +1,13 @@
-/*global define, Media*/
+/*global define, Media, document, window*/
 /*jshint expr:true, loopfunc:true*/
 
 define(
   [
+    'jquery',
     'animations/fireworks/Fireworks',
     'animations/starburst/Starburst'
   ],
-  function (Fireworks, Starburst) {
+  function ($, Fireworks, Starburst) {
     "use strict";
 
     var canvas,context;
