@@ -29,16 +29,16 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-        <string>icon.png</string>
-        <string>icon@2x.png</string>
-        <string>icon-72.png</string>
-        <string>icon-72@2x.png</string>
-        <string>Default~iphone.png</string>
-        <string>Default@2x~iphone.png</string>
-        <string>Default-Portrait~ipad.png</string>
-        <string>Default-Portrait@2x~ipad.png</string>
-        <string>Default-Landscape~ipad.png</string>
-        <string>Default-Landscape@2x~ipad.png</string>
+				<string>icon.png</string>
+				<string>icon@2x.png</string>
+				<string>icon-72.png</string>
+				<string>icon-72@2x.png</string>
+				<string>Default~iphone.png</string>
+				<string>Default@2x~iphone.png</string>
+				<string>Default-Portrait~ipad.png</string>
+				<string>Default-Portrait@2x~ipad.png</string>
+				<string>Default-Landscape~ipad.png</string>
+				<string>Default-Landscape@2x~ipad.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<false/>
@@ -63,11 +63,9 @@
 	<key>NSMainNibFile</key>
 	<string></string>
 	<key>NSMainNibFile~ipad</key>
-	<string></string>
+	<string>MainViewController</string>
 	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
+	<array/>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

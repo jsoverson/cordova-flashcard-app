@@ -480,7 +480,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "pick-a-letter/pick-a-letter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "pick-a-letter";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -500,7 +500,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "pick-a-letter/pick-a-letter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "pick-a-letter";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
