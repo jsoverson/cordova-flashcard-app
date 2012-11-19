@@ -470,7 +470,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -480,7 +480,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "pick-a-letter/pick-a-letter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "pick-a-letter";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -493,14 +493,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "pick-a-letter/pick-a-letter-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "pick-a-letter/pick-a-letter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "pick-a-letter";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
