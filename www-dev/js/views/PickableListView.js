@@ -35,14 +35,13 @@ define([
     },
 
     onChildClick : function (childView) {
-      if (!childView.isTarget) audioController.play('fail','no');
+      if (!childView.isTarget) audioController.play('failure');
     },
 
     onTargetFound : function (targetView) {
 
-      audioController.play('success', 'applause');
+      targetView.success();
 
-      targetView.positionAbsolute();
       _(this.children).each(function (view) {
         if (view !== targetView) view.hide();
       });

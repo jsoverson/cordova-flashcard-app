@@ -11,14 +11,16 @@ define([], function () {
 
     prepare : function (type, sound, extension) {
       if (window.Media) {
+        //Allow cycling of failures / customized Success
+        if (type === 'failure') sound = getFailureSound();
         var audioFile = this.getAudioFile(type, sound, extension);
         return getMediaObject(audioFile);
       }
       return null;
     },
 
-    play : function (type, sound) {
-      var media = this.prepare(type, sound);
+    play : function (type, sound, extension) {
+      var media = this.prepare(type, sound, extension);
       if (media) media.play();
     },
 
@@ -37,6 +39,12 @@ define([], function () {
 
   function getMediaObject(audioFile) {
     return new Media(audioFile, mediaSuccess, mediaError, mediaStatus);
+  }
+
+  function getFailureSound() {
+    var failures = ['hmm','uhoh','whoops'];
+    var index = ~~(Math.random() * failures.length);
+    return failures[index];
   }
 
   function mediaSuccess() {
