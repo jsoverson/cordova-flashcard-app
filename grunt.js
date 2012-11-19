@@ -110,6 +110,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-clean');
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-requirejs');
 
   grunt.registerTask('default', 'dev');

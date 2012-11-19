@@ -1,6 +1,6 @@
 /*global require, Media, define,_,Backbone*/
 
-define(['marionette','views/PickableListView'], function (Marionette, PickableListView) {
+define(['marionette','views/PickableListView','controllers/audio'], function (Marionette, PickableListView, audioController) {
   "use strict";
 
   var BalloonView = Marionette.ItemView.extend({
@@ -28,10 +28,9 @@ define(['marionette','views/PickableListView'], function (Marionette, PickableLi
     onDown : function(evt) {
       this.$el.unbind();
       require('application').vent.trigger('pickable:click', this);
-      if (window.Media) {
-        var popSound = new Media('audio/balloon-pop.wav', function () {}, function (err) {});
-        popSound.play();
-      }
+
+      audioController.play('actions','balloon-pop');
+
       this.context.clearRect(0,0,this.canvas.width,this.canvas.height);
       var img = document.getElementById('cloud');
       this.context.drawImage(img,0,0,200,200);

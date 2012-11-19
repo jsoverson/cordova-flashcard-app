@@ -4,6 +4,10 @@ define(['marionette'], function (Marionette) {
   "use strict";
 
   var MainMenu = Marionette.ItemView.extend({
+    tagName      : 'div',
+    id           : 'main-menu',
+    template     : '#main-menu',
+
     events       : {
       'click .start'      : 'onStartClick',
       'mousedown .start'  : 'onSelect',
@@ -11,14 +15,14 @@ define(['marionette'], function (Marionette) {
       'mouseup .start'    : 'onStartClick',
       'touchend .start'   : 'onStartClick'
     },
-    tagName      : 'div',
-    id           : 'main-menu',
-    template     : '#main-menu',
+
     onStartClick : function (evt) {
       require('application').newGame();
     },
+
     onUnselect   : function (evt) {
     },
+
     onSelect     : function (evt) {
     }
   });

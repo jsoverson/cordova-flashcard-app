@@ -5,9 +5,10 @@ define(
   [
     'zepto',
     'animations/fireworks/Fireworks',
-    'animations/starburst/Starburst'
+    'animations/starburst/Starburst',
+    'controllers/audio'
   ],
-  function ($, Fireworks, Starburst) {
+  function ($, Fireworks, Starburst, audioController) {
     "use strict";
 
     var canvas,context;
@@ -35,14 +36,8 @@ define(
       },
       fireworks : function() {
         var display = new Fireworks(canvas);
-        var i = 7,pop;
-
-        try {
-          pop = new Media('audio/pop.mp3',function() {},
-            function(err) {}
-          );
-          pop.prepare();
-        } catch(e) {}
+        var i = 7,
+          pop = audioController.prepare('actions','pop');
 
         while (i--) {
           setTimeout(function(){

@@ -10,6 +10,7 @@ define(['backbone', 'underscore'], function (Backbone, _) {
   _(26).times(function(index) {
     var letter = String.fromCharCode(charCodeStart + index);
     alphabet.add({
+      type   : 'letter',
       id     : letter,
       letter : letter,
       image : ''

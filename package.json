@@ -6,7 +6,8 @@
     "grunt": "latest",
     "grunt-open": "latest",
     "grunt-requirejs": "latest",
-    "grunt-contrib-copy" : "latest",
-    "grunt-clean" : "latest"
+    "grunt-contrib-copy": "latest",
+    "grunt-clean": "latest",
+    "grunt-contrib-jshint": "~0.1.0"
   }
 }

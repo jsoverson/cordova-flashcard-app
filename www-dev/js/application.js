@@ -53,7 +53,6 @@ define(
       app.mainMenu();
     });
 
-
     app.vent.on('game:new',app.newGame);
 
     function delayNewGame(millis) {
