@@ -63,6 +63,7 @@ define(
 
     app.vent.on('game:completed',function(){
       var animation;
+
       if (Math.random() > 0.5) {
         animation = animations.fireworks;
       } else {
