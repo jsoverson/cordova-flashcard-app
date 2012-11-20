@@ -11,7 +11,7 @@
 	<key>EnableViewportScale</key>
 	<false/>
 	<key>AutoHideSplashScreen</key>
-	<false/>
+	<true/>
 	<key>ShowSplashScreenSpinner</key>
 	<true/>
 	<key>MediaPlaybackRequiresUserAction</key>
@@ -20,16 +20,18 @@
 	<false/>
 	<key>OpenAllWhitelistURLsInWebView</key>
 	<false/>
+	<key>BackupWebStorage</key>
+	<true/>
 	<key>ExternalHosts</key>
 	<array>
-		<string>*google.com</string>
-		<string>*jarrodoverson.com</string>
-		<string>www.google-analytics.com</string>
+		<string>*.google-analytics.com</string>
 	</array>
 	<key>Plugins</key>
 	<dict>
-		<key>org.apache.cordova.WebInspector</key>
-		<string>CDVWebInspector</string>
+		<key>Device</key>
+		<string>CDVDevice</string>
+		<key>Logger</key>
+		<string>CDVLogger</string>
 		<key>Compass</key>
 		<string>CDVLocation</string>
 		<key>Accelerometer</key>
@@ -42,6 +44,8 @@
 		<string>CDVContacts</string>
 		<key>Debug Console</key>
 		<string>CDVDebugConsole</string>
+		<key>Echo</key>
+		<string>CDVEcho</string>
 		<key>File</key>
 		<string>CDVFile</string>
 		<key>FileTransfer</key>

@@ -1,0 +1,78 @@
+
+// Smartphones (portrait and landscape)
+@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+}
+
+// Smartphones (portrait)
+@media screen and (max-width : 320px) {
+  #main-menu {
+    background: url('../img/Default-Portrait@~ipad.png');
+  }
+
+  .pickable-item {
+    &.fullscreen {
+      top:33.3% !important;
+      left:25% !important;
+    }
+  }
+}
+
+//Smartphones (landscape)
+@media screen and (min-width : 321px) {
+  #main-menu {
+    background: url('../img/Default-Landscape@~ipad.png');
+  }
+
+  .pickable-item {
+    &.fullscreen {
+      top:20% !important;
+      left:33.3% !important;
+    }
+  }
+}
+
+
+//Ipad Portrait
+@media screen and (min-height:1000px) and (max-width:800px) {
+  .pickable-item {
+    &.fullscreen {
+      top:33.3% !important;
+      left:25% !important;
+    }
+  }
+  #main-menu {
+    background: url('../img/Default-Portrait@2x~ipad.png');
+  }
+  .pickable-item {
+    height : 33.3%;
+    width : 50%;
+
+    span {
+      font-size: 220px !important;
+    }
+  }
+}
+
+
+//Ipad Landscape
+@media screen and (min-width:1000px) and (max-height:800px) {
+  .pickable-item {
+    &.fullscreen {
+      top:20% !important;
+      left:33.3% !important;
+    }
+  }
+  #main-menu {
+    background: url('../img/Default-Landscape@2x~ipad.png');
+  }
+
+  .pickable-item {
+    height : 50%;
+    width : 33.3%;
+
+    span {
+      font-size: 220px !important;
+    }
+  }
+}
