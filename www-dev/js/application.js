@@ -3,15 +3,14 @@
 define(
   [
     'marionette',
+    'underscore',
     'Trak',
-    'datasource/alphabet',
-    'views/PickableListView',
+    'game/definitions',
     'views/MainMenu',
     'views/AnimationMenu',
-    'animations',
-    'rewards'
+    'animations'
   ],
-  function (Marionette, trak, datasource, PickableListView, MainMenu, AnimationMenu,animations,rewards) {
+  function (Marionette, _, trak, GameList, MainMenu, AnimationMenu,animations) {
     "use strict";
 
     var app = new Marionette.Application();
@@ -20,40 +19,46 @@ define(
       main : '#content'
     });
 
-    app.mainMenu = function() {
-      app.main.show(new MainMenu());
-    };
-
-    app.animationMenu = function() {
-      app.main.show(new AnimationMenu());
-    };
-
     var numGames = 0;
+
     app.newGame = function(){
       clearTimeout(app.newGameTimer);
       trak.event('game','new');
 
-      var gameField;
-      if (++numGames % 5 === 0) {
-        gameField = rewards.balloonGame();
-      } else {
-        var pickableItems = datasource.shuffle().slice(0,6);
-        var gameList = new Backbone.Collection(pickableItems);
-        gameField = new PickableListView({ collection : gameList });
+      /*
+        var Game;
+        if (++numGames % 5 === 0) {
+          Game = rewards.balloonGame();
+        } else {
+          Game = GameList.AlphabetSelection;
+        }
+      */
+
+      var Game = getRandomGame();
+      app.main.show(new Game());
+    };
+
+    function getRandomGame() {
+      var game, arr = [];
+      for(game in GameList) {
+        if(GameList.hasOwnProperty(game)) arr.push(game);
       }
+      return GameList[arr[~~(Math.random() * arr.length)]];
+    }
 
-      app.main.show(gameField);
-    };
+    app.mainMenu = function() { app.main.show(new MainMenu()); };
+    app.animationMenu = function() { app.main.show(new AnimationMenu()); };
+    app.resume = function() { app.mainMenu(); };
 
-    app.resume = function() {
-      app.mainMenu();
-    };
-
-    app.vent.on('app:start', function() {
-      app.mainMenu();
-    });
-
+    app.vent.on('app:start', app.mainMenu);
     app.vent.on('game:new',app.newGame);
+
+    app.vent.on('reward:completed',function(){ delayNewGame(500); });
+
+    app.vent.on('game:completed',function(){
+      triggerAnimation();
+      delayNewGame(6500);
+    });
 
     function delayNewGame(millis) {
       app.newGameTimer = setTimeout(function(){
@@ -61,23 +66,16 @@ define(
       }, millis);
     }
 
-    app.vent.on('game:completed',function(){
+    function triggerAnimation() {
       var animation;
-
       if (Math.random() > 0.5) {
         animation = animations.fireworks;
       } else {
         animation = animations.starburst;
       }
-
       // Wait for CSS animations to complete for performance
       setTimeout(animation,500);
-      delayNewGame(6500);
-    });
-
-    app.vent.on('reward:completed',function(){
-      delayNewGame(500);
-    });
+    }
 
     function trackEvent(eventName) {
       var firstSplit = eventName.indexOf(':'),

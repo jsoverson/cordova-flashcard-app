@@ -1,12 +1,15 @@
 /*global require,define, Backbone*/
 
-define(['marionette'], function (Marionette) {
+define(['marionette', 'underscore'], function (Marionette, _) {
   "use strict";
 
   var MainMenu = Marionette.ItemView.extend({
+
     tagName      : 'div',
+
     id           : 'main-menu',
-    template     : '#main-menu',
+
+    template     : _.template('<div><button class="start btn btn-large btn-info">Start!</button</div>'),
 
     events       : {
       'click .start'      : 'onStartClick',
@@ -16,15 +19,12 @@ define(['marionette'], function (Marionette) {
       'touchend .start'   : 'onStartClick'
     },
 
-    onStartClick : function (evt) {
+    onStartClick : function () {
       require('application').newGame();
     },
 
-    onUnselect   : function (evt) {
-    },
-
-    onSelect     : function (evt) {
-    }
+    onUnselect   : function () {},
+    onSelect     : function () {}
   });
 
   return MainMenu;
