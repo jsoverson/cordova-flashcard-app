@@ -26,7 +26,6 @@ define(
             image : ''
           });
         });
-        console.log(itemArray);
         return itemArray;
       }
     });

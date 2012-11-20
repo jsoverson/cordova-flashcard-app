@@ -17,7 +17,7 @@ define(
       className : 'pickable-item',
 
       template  : _.template('<div class="pickable">' +
-                   ' <% if(image) {%><img src="<%=image%>"><% } else { %><span><%= id %></span><% } %> '+
+                   ' <% if (image) {%><img src="<%=image%>"><% } else { %><span><%= id %></span><% } %> '+
                   '</div>'),
 
       isTarget : false,
@@ -64,9 +64,10 @@ define(
         return this;
       },
 
-      askQuestion : function () {
+        askQuestion : function () {
         var type = this.model.get('type'),
-          item = this.model.get(type).toLowerCase();
+          item = this.model.get(type);
+          item = _.isString(item) ? item.toLowerCase() : item;
 
         audioController.play(type, item);
         return this;

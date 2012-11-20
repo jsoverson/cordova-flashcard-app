@@ -2,13 +2,15 @@
 
 define(
   [
-    'game/alphabet/List'
+    'game/alphabet/List',
+    'game/numbers/List'
   ],
-  function (AlphabetSelection) {
+  function (AlphabetSelection, NumberSelection) {
     "use strict";
 
     return {
-      AlphabetSelection : AlphabetSelection
+      AlphabetSelection : AlphabetSelection,
+      NumberSelection   : NumberSelection
     }
 
   });
