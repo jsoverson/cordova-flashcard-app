@@ -11,6 +11,6 @@ define(
     return {
       AlphabetSelection : AlphabetSelection,
       NumberSelection   : NumberSelection
-    }
+    };
 
   });
