@@ -6,7 +6,7 @@ define(
     'datasource/randomColors'
   ],
   function (BalloonGame, randomColors) {
-    "use strict";
+    
 
     return {
       balloonGame : function() {

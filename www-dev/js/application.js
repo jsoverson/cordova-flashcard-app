@@ -50,7 +50,13 @@ define(
     app.animationMenu = function() { app.main.show(new AnimationMenu()); };
     app.resume = function() { app.mainMenu(); };
 
-    app.vent.on('app:start', app.mainMenu);
+    app.vent.on('app:start', function(){
+      if (document.location.query = 'newgame') {
+        app.vent.trigger('game:new');
+      } else {
+        app.mainMenu();
+      }
+    });
     app.vent.on('game:new',app.newGame);
 
     app.vent.on('reward:completed',function(){ delayNewGame(500); });

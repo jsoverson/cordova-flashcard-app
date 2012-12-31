@@ -1,7 +1,7 @@
 /*global define, Backbone,_*/
 
 define(['backbone', 'underscore'], function (Backbone, _) {
-  "use strict";
+  
 
   var Color = Backbone.Model.extend({
     toString : function() {

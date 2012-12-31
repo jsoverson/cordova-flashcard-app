@@ -149,6 +149,12 @@
   width: 100%;
   height: 100%;
 }
+@font-face {
+  font-family: 'Short Stack';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Short Stack'), local('ShortStack'), url(short-stack.woff) format('woff');
+}
 * {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -208,24 +214,6 @@ body {
   -webkit-transition-property: opacity,top,left;
   -webkit-transition-duration: 500ms,500ms,500ms;
 }
-.pickable-list .pickable-item.fullscreen {
-  -webkit-transition-property: left,top,width,height;
-  -webkit-transition-duration: 500ms,500ms,500ms,500ms;
-  -webkit-timing-function: ease-in-out;
-}
-.pickable-list .pickable-item.fullscreen .pickable {
-  -webkit-animation: wobble 2s infinite;
-  margin-left: -40%;
-  background: transparent;
-  border: 0;
-}
-.pickable-list .pickable-item.fullscreen .pickable span {
-  -webkit-transition-property: text-shadow;
-  -webkit-transition-duration: 500ms;
-  -webkit-timing-function: ease-in-out;
-  color: #225261;
-  text-shadow: 5px 5px 20px #a0f8ff, -5px 5px 20px #a0f8ff, -5px -5px 20px #a0f8ff, 5px -5px 20px #a0f8ff;
-}
 .pickable-list .pickable-item .pickable {
   width: 80%;
   height: 80%;
@@ -236,10 +224,30 @@ body {
   margin-top: -40%;
   text-align: center;
   color: #0c0c0c;
-  border: 10px solid #83e1ff;
+  border: 15px solid #fce87a;
   border-radius: 40px;
-  box-shadow: inset 3px 3px 20px 0px #333;
-  background-color: #ffffff;
+  box-shadow: inset 1px 1px 13px -4px #333333;
+  background: #edfbf9;
+  /* Old browsers */
+
+  background: -moz-linear-gradient(top, #ffffff 0%, #edfbf9 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #ffffff), color-stop(100%, #edfbf9));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(to bottom right, #ffffff 0%, #edfbf9 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(to bottom right, #ffffff 0%, #edfbf9 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(to bottom right, #ffffff 0%, #edfbf9 100%);
+  /* IE10+ */
+
+  background: linear-gradient(to bottom right, #ffffff 0%, #edfbf9 100%);
+  /* W3C */
+
 }
 .pickable-list .pickable-item .pickable img {
   width: 100px;
@@ -259,8 +267,28 @@ body {
   left: 50%;
   margin-left: -100px;
   margin-top: -100px;
-  line-height: 200px;
+  font-family: 'Short Stack', cursive;
   font-size: 120px;
+  line-height: 200px;
+}
+.pickable-list .pickable-item.fullscreen {
+  -webkit-transition-property: left,top,width,height;
+  -webkit-transition-duration: 500ms,500ms,500ms,500ms;
+  -webkit-timing-function: ease-in-out;
+}
+.pickable-list .pickable-item.fullscreen .pickable {
+  -webkit-animation: wobble 2s infinite;
+  margin-left: -40%;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+.pickable-list .pickable-item.fullscreen .pickable span {
+  -webkit-transition-property: text-shadow;
+  -webkit-transition-duration: 500ms;
+  -webkit-timing-function: ease-in-out;
+  color: #225261;
+  text-shadow: 5px 5px 20px #a0f8ff, -5px 5px 20px #a0f8ff, -5px -5px 20px #a0f8ff, 5px -5px 20px #a0f8ff;
 }
 .pickable-list .pickable-item.pressed .pickable {
   background-color: #cccccc !important;

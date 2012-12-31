@@ -23,8 +23,6 @@ body {
   background-color: transparent;
 }
 
-body,html {
-}
 
 #canvas {
   position:absolute;
@@ -64,6 +62,27 @@ body,html {
     -webkit-transition-property:opacity,top,left;
     -webkit-transition-duration:500ms,500ms,500ms;
 
+    .pickable {
+      .center-absolute(80%,80%);
+      text-align:center;
+      color:@foregroundColor;
+      border:15px solid #fce87a;
+      border-radius:40px;
+      box-shadow: inset 1px 1px 13px -4px #333;
+      .diagonalGradient(white,#edfbf9);
+
+      img {
+        .center-absolute(100px,100px);
+      }
+      span {
+        display:block;
+        .center-absolute(200px,200px);
+        font-family: @cardFont;
+        font-size: @cardFontSize;
+        line-height: @cardLineHeight;
+      }
+    }
+
     &.fullscreen {
 
       -webkit-transition-property:left,top,width,height;
@@ -75,6 +94,7 @@ body,html {
         margin-left:-40%;
         background:transparent;
         border: 0;
+        box-shadow: none;
 
         span {
           -webkit-transition-property:text-shadow;
@@ -85,24 +105,7 @@ body,html {
         }
       }
     }
-    .pickable {
-      .center-absolute(80%,80%);
-      text-align:center;
-      color:@foregroundColor;
-      border:10px solid @borderColor;
-      border-radius:40px;
-      box-shadow: inset 3px 3px 20px 0px #333;
-      background-color: @backgroundColor;
-      img {
-        .center-absolute(100px,100px);
-      }
-      span {
-        display:block;
-        .center-absolute(200px,200px);
-        line-height:200px;
-        font-size:120px;
-      }
-    }
+
     &.pressed {
       .pickable {
         background-color: @pressedColor !important;
