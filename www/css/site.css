@@ -239,9 +239,10 @@ body {
 @media only screen and (max-device-width: 480px), only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
   .pickable {
     border-width: 7px !important;
+    border-radius: 15% !important;
   }
   .pickable span {
-    font-size: 100px !important;
+    font-size: 90px !important;
   }
 }
 @media (orientation: landscape) {
