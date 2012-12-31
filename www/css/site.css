@@ -149,12 +149,6 @@
   width: 100%;
   height: 100%;
 }
-@font-face {
-  font-family: 'Short Stack';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Short Stack'), local('ShortStack'), url(short-stack.woff) format('woff');
-}
 * {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -267,7 +261,7 @@ body {
   left: 50%;
   margin-left: -100px;
   margin-top: -100px;
-  font-family: 'Short Stack', cursive;
+  font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
   font-size: 120px;
   line-height: 200px;
 }
