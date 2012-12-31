@@ -12,5 +12,8 @@
     "grunt-open": "~0.1.0",
     "grunt-strip": "~0.1.3",
     "grunt-requirejs": "~0.3.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-less": "~0.3.2"
   }
 }

@@ -14,6 +14,18 @@ module.exports = function (grunt) {
     copy      : require('./.grunt/copy'),
     clean     : {
       dist : ['www']
+    },
+    less: {
+      dev: {
+        files: {
+          "www-dev/css/site.css": "www-dev/css/site.less"
+        }
+      },
+      build: {
+        files: {
+          "www/css/site.css": "www/css/site.less"
+        }
+      }
     }
   });
 
@@ -23,11 +35,12 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-less');
 
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-strip');
 
-  grunt.registerTask('dev', ['clean:temp', 'jshint', 'copy:all', 'watch']);
-  grunt.registerTask('build', ['clean', 'copy:all', 'strip', 'requirejs', 'uglify']);
+  grunt.registerTask('dev', ['jshint', 'less:dev', 'copy:all', 'watch']);
+  grunt.registerTask('build', ['clean', 'copy:all', 'jshint', 'less:dev', 'strip', 'requirejs', 'uglify']);
 
 };
