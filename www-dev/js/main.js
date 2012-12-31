@@ -4,13 +4,12 @@ require.config({
 
   locale : 'en_US',
   paths  : {
-    'jquery'     : 'vendor/jquery-1.7.1.min',
     'zepto'      : 'vendor/zepto',
     'underscore' : 'vendor/underscore',
     'backbone'   : 'vendor/backbone',
     'marionette' : 'vendor/backbone.marionette',
     'deferred'   : 'vendor/deferred',
-    'cordova'    : 'vendor/cordova-2.1.0'
+    'cordova'    : 'vendor/cordova-2.2.0'
   },
 
   shim : {
