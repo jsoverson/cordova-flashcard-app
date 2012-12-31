@@ -235,10 +235,10 @@ body {
   margin-left: -40%;
   margin-top: -40%;
   text-align: center;
-  border-radius: 5px;
   color: #0c0c0c;
-  border: 10px solid #e6e6e6;
-  border-radius: 10px;
+  border: 10px solid #83e1ff;
+  border-radius: 40px;
+  box-shadow: inset 3px 3px 20px 0px #333;
   background-color: #ffffff;
 }
 .pickable-list .pickable-item .pickable img {
