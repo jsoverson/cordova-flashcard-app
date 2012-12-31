@@ -1,7 +1,7 @@
 
 js/main.js
 ----------------
-/Users/cmiller/Desktop/flashcards/node_modules/grunt-requirejs/node_modules/almond/almond.js
+/srv/cordova-flashcard-app/node_modules/grunt-requirejs/node_modules/almond/almond.js
 js/vendor/underscore.js
 js/vendor/deferred.js
 js/vendor/zepto.js
