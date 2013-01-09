@@ -27,11 +27,11 @@ define(
       trak.event('game','new');
 
       var Game;
-        if (++numGames % 5 === 0) {
-          Game = RewardList.BalloonSelection;
-        } else {
-          Game = getRandomGame();
-        }
+      if (++numGames % 5 === 0) {
+        Game = RewardList.BalloonSelection;
+      } else {
+        Game = getRandomGame();
+      }
       app.main.show(new Game());
     };
 
