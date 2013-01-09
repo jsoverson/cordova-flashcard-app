@@ -28,13 +28,11 @@ define(
 
       var Game;
 
-/*      if (++numGames % 5 === 0) {
+      if (++numGames % 5 === 0) {
         Game = RewardList.BalloonSelection;
       } else {
         Game = getRandomGame();
       }
-*/
-      Game = RewardList.BalloonSelection;
 
       app.main.show(new Game());
     };
