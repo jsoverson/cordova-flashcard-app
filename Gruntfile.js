@@ -26,12 +26,14 @@ module.exports = function (grunt) {
           "www/css/site.css": "www/css/site.less"
         }
       }
-    }
+    },
+    connect    : require('./.grunt/connect')
   });
 
   grunt.loadNpmTasks('grunt-requirejs');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -40,7 +42,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-strip');
 
-  grunt.registerTask('dev', ['jshint', 'less:dev', 'copy:all', 'watch']);
+  grunt.registerTask('dev', ['jshint', 'less:dev', 'copy:all', 'connect:dev', 'watch']);
   grunt.registerTask('build', ['clean', 'copy:all', 'jshint', 'less:dev', 'strip', 'requirejs', 'uglify']);
 
 };

@@ -3,10 +3,9 @@
 define(
   [
     'marionette',
-    'core/games/selection/Item',
-    'core/controllers/audio'
+    'core/rewards/selection/Item'
   ],
-  function (Marionette, DefaultSelectionItem, audioController) {
+  function (Marionette, DefaultSelectionItem) {
     "use strict";
 
     var SelectionList = Marionette.CollectionView.extend({
@@ -24,14 +23,14 @@ define(
       constructor : function () {
         Marionette.CompositeView.prototype.constructor.apply(this, arguments);
         this.on("item:added", this._bindItem, this);
-        this.on('render', this._onRender, this);
+        this.on('render', this.onRender, this);
         this.on('close', this._unbindEvents, this);
         this._spliceCollection();
       },
 
       _bindItem : function (itemView) {
-        this.bindTo(itemView, 'pickable:targetClick', this._onTargetFound, this);
         this.bindTo(itemView, 'pickable:click', this._onChildClick, this);
+        this.bindTo(itemView, 'reward:complete', this._onRewardComplete, this);
       },
 
       _spliceCollection : function() {
@@ -40,32 +39,22 @@ define(
         this.collection = new Backbone.Collection(items);
       },
 
-      _onRender : function () {
-        this.targetIndex = ~~(Math.random() * this.collection.length);
-        var targetChild = this.children[this.collection.at(this.targetIndex).cid];
-        targetChild.isTarget = true;
-        targetChild.askQuestion();
-      },
-
-      _onChildClick : function (childView) {
-        if (!childView.isTarget) this.onFailSelect();
-      },
-
-      _onTargetFound : function (targetView) {
-        _(this.children).each(function (view) {
-          if (view !== targetView) view._hide();
+      _onChildClick : function(childView) {
+        childView.model.set('picked', true);
+        var notPicked = this.collection.filter(function(item) {
+          return item.get("picked") === false;
         });
-        targetView._fullscreen().success();
-        require('application').vent.trigger('game:completed');
+        if (notPicked.length === 0) this._onRewardComplete();
+      },
+
+      _onRewardComplete : function () {
+        require('application').vent.trigger('game:new');
       },
 
       _unbindEvents : function () {
         this.unbindAll();
-      },
-
-      onFailSelect : function () {
-        audioController.play('failure');
       }
+
     });
 
     return SelectionList;

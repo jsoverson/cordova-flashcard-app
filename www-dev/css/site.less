@@ -5,36 +5,37 @@
 @import 'variables';
 
 * {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -webkit-backface-visibility: hidden;
-  box-sizing: border-box;
-  padding:0;
-  margin:0;
+  -webkit-touch-callout       : none;
+  -webkit-user-select         : none;
+  -webkit-backface-visibility : hidden;
+  box-sizing                  : border-box;
+  padding                     : 0;
+  margin                      : 0;
 }
 
 html {
-  background-color: @canvasBackground;
+  background-color : @canvasBackground;
   .fullsize;
-  overflow:hidden;
-}
-body {
-  .fullsize;
-  background-color: transparent;
+  overflow         : hidden;
 }
 
-body,html {
+body {
+  .fullsize;
+  background-color : transparent;
+}
+
+body, html {
 }
 
 #canvas {
-  position:absolute;
-  top:0;
-  left:0;
-  z-index:-1;
-  background-color:@canvasBackground;
+  position         : absolute;
+  top              : 0;
+  left             : 0;
+  z-index          : -1;
+  background-color : @canvasBackground;
 }
 
-#resources { display:none; }
+#resources { display : none; }
 
 #content {
   .fullsize;
@@ -42,75 +43,88 @@ body,html {
 
 .pickable-list {
   .fullsize;
-  &.reward.balloon {
 
-    .pickable {
-      background:transparent;
-      border:0;
-      canvas {
-        .center-absolute(200px,200px);
-        -webkit-animation: wobble 2s infinite;
-
-      }
-    }
-  }
   .pickable-item {
-
-    min-width: 150px;
-    min-height: 150px;
-
-    float:left;
-    position:relative;
-    -webkit-transition-property:opacity,top,left;
-    -webkit-transition-duration:500ms,500ms,500ms;
+    min-width                   : 150px;
+    min-height                  : 150px;
+    float                       : left;
+    position                    : relative;
+    -webkit-transition-property : opacity, top, left;
+    -webkit-transition-duration : 500ms, 500ms, 500ms;
 
     &.fullscreen {
+      -webkit-transition-property : left, top, width, height;
+      -webkit-transition-duration : 500ms, 500ms, 500ms, 500ms;
+      -webkit-timing-function     : ease-in-out;
 
-      -webkit-transition-property:left,top,width,height;
-      -webkit-transition-duration:500ms,500ms,500ms,500ms;
-      -webkit-timing-function:ease-in-out;
+      &.game {
+        border: none !important;
 
-      .pickable {
-        -webkit-animation: wobble 2s infinite;
-        margin-left:-40%;
-        background:transparent;
-        border: 0;
+        .pickable {
+          -webkit-animation : wobble 2s infinite;
+          margin-left       : -40% !important;
+          background        : transparent !important;
+          box-shadow : none !important;
+          border: none !important;
 
-        span {
-          -webkit-transition-property:text-shadow;
-          -webkit-transition-duration:500ms;
-          -webkit-timing-function:ease-in-out;
-          color: rgb(34, 82, 97);
-          .glow(#a0f8ff, 5px, 20px);
+          span {
+            -webkit-transition-property : text-shadow;
+            -webkit-transition-duration : 500ms;
+            -webkit-timing-function     : ease-in-out;
+            color                       : rgb(34, 82, 97);
+            .glow(#a0f8ff, 5px, 20px);
+          }
         }
       }
     }
+
+    &.reward {
+      .pickable {
+        canvas {
+          .center-absolute(200px,200px);
+          -webkit-animation : wobble 2s infinite;
+        }
+      }
+    }
+
+    &.game {
+      .pickable {
+        border           : 10px solid @borderColor;
+        border-radius    : 40px;
+        box-shadow       : inset 3px 3px 20px 0px #333;
+        background-color : @backgroundColor;
+      }
+    }
+
     .pickable {
       .center-absolute(80%,80%);
-      text-align:center;
-      color:@foregroundColor;
-      border:10px solid @borderColor;
-      border-radius:40px;
-      box-shadow: inset 3px 3px 20px 0px #333;
-      background-color: @backgroundColor;
+      text-align : center;
+      color      : @foregroundColor;
+
       img {
         .center-absolute(100px,100px);
       }
+
       span {
-        display:block;
+        display     : block;
         .center-absolute(200px,200px);
-        line-height:200px;
-        font-size:120px;
+        line-height : 200px;
+        font-size   : 120px;
       }
     }
+
     &.pressed {
       .pickable {
-        background-color: @pressedColor !important;
+        &.game {
+          background-color : @pressedColor !important;
+        }
       }
     }
     &.targetMissed {
       .pickable {
-        background-color: @targetMissedColor !important;
+        &.game {
+          background-color : @targetMissedColor !important;
+        }
       }
     }
   }

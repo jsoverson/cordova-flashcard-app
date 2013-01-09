@@ -14,7 +14,7 @@ define(
 
       tagName   : 'div',
 
-      className : 'pickable-item',
+      className : 'pickable-item game',
 
       template  : _.template('<div class="pickable">' +
                    ' <% if (image) {%><img src="<%=image%>"><% } else { %><span><%= id %></span><% } %> '+
