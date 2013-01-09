@@ -2,7 +2,7 @@
 
 
 describe('Contrived Math Module', function(){
-  "use strict";
+  
 
   var math = require('math');
 
