@@ -7,7 +7,7 @@ define(
     'core/controllers/audio'
   ],
   function (Marionette, PickableListView, audioController) {
-    "use strict";
+    
 
     var BalloonView = Marionette.ItemView.extend({
 

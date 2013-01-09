@@ -8,6 +8,15 @@ module.exports = {
       interrupt:true
     }
   },
+  style : {
+    files : ['www-dev/css/**/*.less'],
+    tasks : ['less'],
+    options : {
+      forceWatchMethod:'new',
+      rewatch : true,
+      interrupt:true
+    }
+  },
   html : {
     files : [
       'www-dev/**/*.html'

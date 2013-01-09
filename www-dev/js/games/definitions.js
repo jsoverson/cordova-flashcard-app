@@ -9,8 +9,7 @@ define(
     "use strict";
 
     return {
-      AlphabetSelection : AlphabetSelection,
-      NumberSelection   : NumberSelection
+      AlphabetSelection : AlphabetSelection
     };
 
   });
