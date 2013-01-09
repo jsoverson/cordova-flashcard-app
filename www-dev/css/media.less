@@ -14,7 +14,11 @@
 
 @media (orientation:landscape) {
   #main-menu {
-    background: url('../img/Default-Portrait@2x~ipad.png');
+    background-image:url('../img/Default-Landscape@2x~ipad.png');
+    background-color:#aed7ed; //variablize this
+    background-repeat:no-repeat;
+    width: 100%;
+
   }
   .pickable-item {
     &.fullscreen {
@@ -32,7 +36,8 @@
 
 @media (orientation:portrait) {
   #main-menu {
-    background: url('../img/Default-Landscape@2x~ipad.png');
+    //want to change this ipad portrait
+    background: url('../img/iPad-menu.png');
   }
   .pickable-item {
     &.fullscreen {

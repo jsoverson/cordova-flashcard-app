@@ -27,13 +27,11 @@ define(
       trak.event('game','new');
 
       var Game;
-
       if (++numGames % 5 === 0) {
         Game = RewardList.BalloonSelection;
       } else {
         Game = getRandomGame();
       }
-
       app.main.show(new Game());
     };
 
@@ -50,7 +48,8 @@ define(
     app.resume = function() { app.mainMenu(); };
 
     app.vent.on('app:start', function(){
-      if (document.location.query = 'newgame') {
+      //this doesn't work?
+      if (document.location.query === 'newgame') {
         app.vent.trigger('game:new');
       } else {
         app.mainMenu();

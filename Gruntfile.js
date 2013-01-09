@@ -42,7 +42,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-strip');
 
-  grunt.registerTask('dev', ['jshint', 'less:dev', 'copy:all', 'connect:dev', 'watch']);
+  grunt.registerTask('dev', ['jshint', 'less:dev', 'connect:dev', 'watch']);
   grunt.registerTask('build', ['clean', 'copy:all', 'jshint', 'less:dev', 'strip', 'requirejs', 'uglify']);
 
 };
