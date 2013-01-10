@@ -63,13 +63,14 @@ require(['zepto', 'application', 'trak', 'VERSION'],
     $(function () {
       trak.view('alphabet-' + VERSION.toString());
       app.vent.trigger('app:start');
+      //app.vent.trigger('game:new');
       document.addEventListener("deviceready", onDeviceReady, false);
       document.addEventListener("resume", app.resume, false);
     });
 
     function onDeviceReady() {
       // Deferring to let UI catch up, if necessary
-      setTimeout(hideSplashScreen, 0);
+      setTimeout(hideSplashScreen, 100);
     }
 
     function hideSplashScreen() {
