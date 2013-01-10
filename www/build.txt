@@ -1,7 +1,7 @@
 
 js/main.js
 ----------------
-/Users/joverson/development/src/cordova-flashcard-app/node_modules/grunt-requirejs/node_modules/almond/almond.js
+/srv/cordova-flashcard-app/node_modules/grunt-requirejs/node_modules/almond/almond.js
 js/vendor/underscore.js
 js/vendor/deferred.js
 js/vendor/zepto.js
@@ -11,11 +11,16 @@ js/Trak.js
 js/core/controllers/audio.js
 js/core/games/selection/Item.js
 js/core/games/selection/List.js
-js/game/alphabet/item.js
-js/game/alphabet/List.js
-js/game/numbers/item.js
-js/game/numbers/List.js
-js/game/definitions.js
+js/games/alphabet/item.js
+js/games/alphabet/List.js
+js/games/number/item.js
+js/games/number/List.js
+js/games/definitions.js
+js/core/rewards/selection/Item.js
+js/core/rewards/selection/List.js
+js/rewards/balloon/item.js
+js/rewards/balloon/List.js
+js/rewards/definitions.js
 js/views/MainMenu.js
 js/animations/fireworks/util.js
 js/animations/fireworks/Particle.js

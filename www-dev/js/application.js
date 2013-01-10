@@ -5,12 +5,13 @@ define(
     'marionette',
     'underscore',
     'Trak',
-    'game/definitions',
+    'games/definitions',
+    'rewards/definitions',
     'views/MainMenu',
     'views/AnimationMenu',
-    'animations'
+    'animations',
   ],
-  function (Marionette, _, trak, GameList, MainMenu, AnimationMenu,animations) {
+  function (Marionette, _, trak, GameList, RewardList, MainMenu, AnimationMenu,animations) {
     "use strict";
 
     var app = new Marionette.Application();
@@ -25,16 +26,12 @@ define(
       clearTimeout(app.newGameTimer);
       trak.event('game','new');
 
-      /*
-        var Game;
-        if (++numGames % 5 === 0) {
-          Game = rewards.balloonGame();
-        } else {
-          Game = GameList.AlphabetSelection;
-        }
-      */
-
-      var Game = getRandomGame();
+      var Game;
+      if (++numGames % 5 === 0) {
+        Game = RewardList.BalloonSelection;
+      } else {
+        Game = getRandomGame();
+      }
       app.main.show(new Game());
     };
 
@@ -51,7 +48,8 @@ define(
     app.resume = function() { app.mainMenu(); };
 
     app.vent.on('app:start', function(){
-      if (document.location.search === '?newgame') {
+      //this doesn't work?
+      if (document.location.query === 'newgame') {
         app.vent.trigger('game:new');
       } else {
         app.mainMenu();

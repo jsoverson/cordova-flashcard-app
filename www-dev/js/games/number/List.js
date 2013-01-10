@@ -5,7 +5,7 @@ define(
     'application',
     'underscore',
     'core/games/selection/List',
-    'game/numbers/item'
+    'games/number/item'
   ],
   function (app, _, SelectionList, NumberItem) {
     "use strict";

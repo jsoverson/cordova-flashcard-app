@@ -22,7 +22,6 @@ body {
   background-color: transparent;
 }
 
-
 #canvas {
   position:absolute;
   top:0;
@@ -39,18 +38,7 @@ body {
 
 .pickable-list {
   .fullsize;
-  &.reward.balloon {
 
-    .pickable {
-      background:transparent;
-      border:0;
-      canvas {
-        .center-absolute(200px,200px);
-        -webkit-animation: wobble 2s infinite;
-
-      }
-    }
-  }
   .pickable-item {
 
     min-width: 150px;
@@ -109,11 +97,25 @@ body {
         background-color: @pressedColor !important;
       }
     }
+
     &.targetMissed {
       .pickable {
         background-color: @targetMissedColor !important;
       }
     }
+
+    &.reward {
+      .pickable {
+        background: none !important;
+        border: none;
+        box-shadow: none;
+        canvas {
+          .center-absolute(200px,200px);
+          -webkit-animation: wobble 2s infinite;
+        }
+      }
+    }
+
   }
 }
 

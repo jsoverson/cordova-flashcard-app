@@ -2,8 +2,8 @@
 
 define(
   [
-    'game/alphabet/List',
-    'game/numbers/List'
+    'games/alphabet/List',
+    'games/number/List'
   ],
   function (AlphabetSelection, NumberSelection) {
     "use strict";
