@@ -1,7 +1,26 @@
+#main-menu {
+  background: url('../img/iPad-menu.png');
+}
+
+@media only screen and (-webkit-min-device-pixel-ration:1.3) {
+  #main-menu {
+    background: url('../img/iPad-menu@2x.png');
+  }
+}
 
 // small screens/hd small screens
-@media only screen and (max-device-width: 480px),
-       only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2)
+@media only screen and (orientation:landscape) and (max-width: 1023px)
+{
+  .pickable {
+    border-width: 7px !important;
+    border-radius: 15% !important;
+    span {
+      font-size: 90px !important;
+    }
+  }
+}
+// small screens/hd small screens
+@media only screen and (orientation:portrait) and (max-width: 700px)
 {
   .pickable {
     border-width: 7px !important;
@@ -13,9 +32,6 @@
 }
 
 @media (orientation:landscape) {
-  #main-menu {
-    background: url('../img/Default-Portrait@2x~ipad.png');
-  }
   .pickable-item {
     &.fullscreen {
       top:20%;
@@ -25,15 +41,12 @@
     width : 33.3%;
 
     span {
-      font-size: 220px;
+      font-size: 190px;
     }
   }
 }
 
 @media (orientation:portrait) {
-  #main-menu {
-    background: url('../img/Default-Landscape@2x~ipad.png');
-  }
   .pickable-item {
     &.fullscreen {
       top:33.3%;
@@ -43,7 +56,7 @@
     width : 50%;
 
     span {
-      font-size: 220px;
+      font-size: 190px;
     }
   }
 }

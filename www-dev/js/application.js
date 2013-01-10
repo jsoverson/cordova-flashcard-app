@@ -51,7 +51,7 @@ define(
     app.resume = function() { app.mainMenu(); };
 
     app.vent.on('app:start', function(){
-      if (document.location.query = 'newgame') {
+      if (document.location.search === '?newgame') {
         app.vent.trigger('game:new');
       } else {
         app.mainMenu();
