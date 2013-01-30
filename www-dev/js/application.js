@@ -35,8 +35,6 @@ define(
       } else {
         Game = GameList.getRandom();
       }
-
-      Game = RewardList.getRandom();
       app.main.show(new Game());
     };
 
