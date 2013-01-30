@@ -27,16 +27,11 @@ define(
       trak.event('game','new');
 
       var Game;
-
-      /*
       if (++numGames % 5 === 0) {
-        Game = GameList.getRandom();
-      } else {
         Game = RewardList.getRandom();
+      } else {
+        Game = GameList.getRandom();
       }
-*/
-
-      Game = RewardList.getRandom();
       app.main.show(new Game());
     };
 
@@ -51,7 +46,7 @@ define(
     });
     app.vent.on('game:new',app.newGame);
 
-    app.vent.on('reward:completed',function(){ delayNewGame(500); });
+    app.vent.on('reward:completed',function(){ delayNewGame(800); });
 
     app.vent.on('game:completed',function(){
       triggerAnimation();
