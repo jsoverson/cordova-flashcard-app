@@ -72,8 +72,9 @@ define([
       },
 
       _renderCanvas : function() {
-        this.context.lineWidth = 4;
-        this.context.shadowBlur = 2;
+        this.context.lineWidth = 7;
+        this.context.lineCap = 'square';
+
         this.context.beginPath();
         this.context.arc(50, 50, 30, this.angleStart , this.angleEnd, false);
         this.context.stroke();

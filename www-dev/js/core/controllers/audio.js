@@ -7,26 +7,37 @@ define([], function () {
 
     audioBasePath : 'audio/',
 
-    extension : '.mp3',
+    extension : 'mp3',
 
-    prepare : function (type, sound, extension) {
+    currentStream : null,
+
+    setAudioExtension : function(extension) {
+      this.extension = extension;
+    },
+
+    prepare : function (type, sound) {
       if (window.Media) {
+        //Stop Current Sound Playing
+        if (this.currentStream) this.currentStream.stop();
         //Allow cycling of failures / customized Success
         if (type === 'failure') sound = getFailureSound();
-        var audioFile = this.getAudioFile(type, sound, extension);
-        return getMediaObject(audioFile);
+        var audioFile = this.getAudioFile(type, sound);
+        this.currentStream = getMediaObject(audioFile);
+        return this.currentStream;
       }
       return null;
     },
 
-    play : function (type, sound, extension) {
-      var media = this.prepare(type, sound, extension);
-      if (media) media.play();
+    play : function (type, sound) {
+      var media = this.prepare(type, sound);
+      if (media){
+        media.play();
+      }
     },
 
-    getAudioFile : function (type, sound,extension) {
+    getAudioFile : function (type, sound) {
       var typePath = this.getTypePath(type);
-      return typePath + '/' + sound + (extension || this.extension);
+      return typePath + '/' + sound + '.' + this.extension;
     },
 
     getTypePath : function (type) {

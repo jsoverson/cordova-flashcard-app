@@ -37,7 +37,7 @@ define(
       fireworks : function () {
         var display = new Fireworks(canvas);
         var i = 7,
-          pop = audioController.prepare('action', 'pop');
+          pop = audioController.prepare('action', 'pop', true);
 
         while (i--) {
           setTimeout(function () {
