@@ -1,0 +1,29 @@
+@import 'variables';
+
+.timer {
+  position : absolute;
+  z-index  : 1;
+  top      : 0;
+  left     : 0;
+  height   : 100px;
+  width    : 100px;
+
+  canvas {
+    &#timer {
+      -webkit-transform : rotate(-90deg);
+      -moz-transform    : rotate(-90deg);
+    }
+  }
+
+  span#count {
+    display    : block;
+    z-index    : 1;
+    position   : absolute;
+    top        : 50%;
+    width      : 100%;
+    margin-top : 9px;
+    font       : 22px Arial Rounded MT Bold;
+    text-align : center;
+    color      : @borderColor;
+  }
+}

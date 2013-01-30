@@ -308,3 +308,26 @@ body {
     background: url('../img/Default-Landscape@2x~ipad.png');
   }
 }
+.timer {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100px;
+  width: 100px;
+}
+.timer canvas#timer {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+}
+.timer span#count {
+  position: absolute;
+  display: block;
+  text-align: center;
+  z-index: 1;
+  width: 100%;
+  top: 50%;
+  margin-top: -0.6em;
+  color: #aed8ed;
+  font: 1.4em Arial Rounded MT Bold;
+}
