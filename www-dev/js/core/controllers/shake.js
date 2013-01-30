@@ -1,4 +1,4 @@
-/*global define, window*/
+/*global define, window, alert*/
 
 define(['underscore'], function (_) {
   "use strict";
@@ -16,7 +16,7 @@ define(['underscore'], function (_) {
     //the shake delta
     maxAccelerationDelta : 0.3,
 
-    previousAcceleration : {
+    prevAcceleration : {
       x: null,
       y: null,
       z: null
@@ -25,41 +25,46 @@ define(['underscore'], function (_) {
     startWatching : function(callback) {
       if (navigator.accelerometer) {
 
-        this.currentWatch = navigator.accelerometer.watchAcceleration(_.bind(function (newAcceleration) {
+        this.currentWatch = navigator.accelerometer.watchAcceleration(_.bind(function (newAcc) {
           var accelerationChange = {};
-          var maxDelta = this.maxAccelerationDelta;
 
           if (this.previousAcceleration.x !== null) {
-
-            accelerationChange.x = Math.abs(this.previousAcceleration.x, newAcceleration.x);
-            accelerationChange.y = Math.abs(this.previousAcceleration.y, newAcceleration.y);
-            accelerationChange.z = Math.abs(this.previousAcceleration.z, newAcceleration.z);
+            accelerationChange.x = Math.abs(this.prevAcceleration.x, newAcc.x);
+            accelerationChange.y = Math.abs(this.prevAcceleration.y, newAcc.y);
+            accelerationChange.z = Math.abs(this.prevAcceleration.z, newAcc.z);
           }
 
           //Currently checking for all shakes
           //we may want to check for specific deltas on each axis
           //so we can simulate up-down left-right shakes, etc
-          if (accelerationChange.x > maxDelta
-            && accelerationChange.y > maxDelta
-            && accelerationChange.z > maxDelta) {
+          if (this.isAccelerationWithinDelta(newAcc)){
             callback();
+
+            //Need to stop and re-start watching
+            this.stopWatching();
           }
 
           //reset with current acceleration readings
-          this.setPreviousAcceleration(newAcceleration);
-          //Need to stop and re-start watching
-          this.stopWatching();
+          this.setPreviousAcceleration(newAcc);
 
         },this), this.onError, { frequency: this.frequency });
       }
     },
 
-    setPreviousAcceleration : function(acceleration) {
-      this.previousAcceleration = {
-        x: acceleration.x,
-        y: acceleration.y,
-        z: acceleration.z
+    isAccelerationWithinDelta : function(acc) {
+      var maxDelta = this.maxAccelerationDelta;
+      if (acc.x > maxDelta && acc.y > maxDelta && acc.z > maxDelta) {
+        return true;
       }
+      return false;
+    },
+
+    setPreviousAcceleration : function(acc) {
+      this.previousAcceleration = {
+        x: acc.x,
+        y: acc.y,
+        z: acc.z
+      };
     },
 
     onError : function() {
