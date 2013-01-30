@@ -32,7 +32,7 @@ define(
         var bubbleColor = this.getRandomColor();
         this.context.globalCompositeOperation = "source-over";
         this.context.beginPath();
-        this.context.shadowBlur=20;
+        this.context.shadowBlur=10;
         this.context.shadowColor= bubbleColor;
         this.context.fillStyle = bubbleColor;
         this.context.arc( pointerX, pointerY,  (1 + Math.random() * scaleSkew) , 0, TwoPI, false);

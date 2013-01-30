@@ -24,6 +24,9 @@ define(
 
     app.newGame = function(){
       clearTimeout(app.newGameTimer);
+
+      //we are tracking this multiple times
+      //after the first call
       trak.event('game','new');
 
       var Game;
@@ -40,14 +43,8 @@ define(
     app.resume = function() { app.mainMenu(); };
 
     app.vent.on('app:start', function(){ app.mainMenu(); });
-
-    app.vent.on('game:new',function() {
-      app.newGame();
-    });
     app.vent.on('game:new',app.newGame);
-
     app.vent.on('reward:completed',function(){ delayNewGame(800); });
-
     app.vent.on('game:completed',function(){
       triggerAnimation();
       delayNewGame(6500);
