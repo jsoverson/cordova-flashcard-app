@@ -20,6 +20,10 @@ js/core/rewards/selection/Item.js
 js/core/rewards/selection/List.js
 js/rewards/balloon/item.js
 js/rewards/balloon/List.js
+js/views/Timer.js
+js/core/rewards/canvas/Item.js
+js/rewards/bubbles/main.js
+js/rewards/colorBurst/main.js
 js/rewards/definitions.js
 js/views/MainMenu.js
 js/animations/fireworks/util.js

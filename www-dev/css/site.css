@@ -321,13 +321,13 @@ body {
   -moz-transform: rotate(-90deg);
 }
 .timer span#count {
-  position: absolute;
   display: block;
-  text-align: center;
   z-index: 1;
-  width: 100%;
+  position: absolute;
   top: 50%;
-  margin-top: -0.6em;
-  color: #aed8ed;
-  font: 1.4em Arial Rounded MT Bold;
+  width: 100%;
+  margin-top: 9px;
+  font: 22px Arial Rounded MT Bold;
+  text-align: center;
+  color: #83e1ff;
 }

@@ -13,6 +13,9 @@
             var ENV = {
                 DEV : true
             };
+            window.requestAnimFrame = (function() {
+                return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame
+            })();
         </script>
     </head>
     <body>
