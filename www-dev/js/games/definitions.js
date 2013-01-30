@@ -8,8 +8,16 @@ define(
   function (AlphabetSelection, NumberSelection) {
     "use strict";
 
-    return {
-      AlphabetSelection : AlphabetSelection
+    var GameDefinitions = {
+
+      games : [AlphabetSelection],
+
+      getRandom : function() {
+        return this.games[~~(Math.random() * this.games.length)];
+      }
+
     };
+
+    return GameDefinitions;
 
   });

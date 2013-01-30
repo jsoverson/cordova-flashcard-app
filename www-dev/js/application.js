@@ -27,33 +27,27 @@ define(
       trak.event('game','new');
 
       var Game;
+
+      /*
       if (++numGames % 5 === 0) {
-        Game = RewardList.BalloonSelection;
+        Game = GameList.getRandom();
       } else {
-        Game = getRandomGame();
+        Game = RewardList.getRandom();
       }
+*/
+
+      Game = RewardList.getRandom();
       app.main.show(new Game());
     };
-
-    function getRandomGame() {
-      var game, arr = [];
-      for(game in GameList) {
-        if(GameList.hasOwnProperty(game)) arr.push(game);
-      }
-      return GameList[arr[~~(Math.random() * arr.length)]];
-    }
 
     app.mainMenu = function() { app.main.show(new MainMenu()); };
     app.animationMenu = function() { app.main.show(new AnimationMenu()); };
     app.resume = function() { app.mainMenu(); };
 
-    app.vent.on('app:start', function(){
-      //this doesn't work?
-      if (document.location.query === 'newgame') {
-        app.vent.trigger('game:new');
-      } else {
-        app.mainMenu();
-      }
+    app.vent.on('app:start', function(){ app.mainMenu(); });
+
+    app.vent.on('game:new',function() {
+      app.newGame();
     });
     app.vent.on('game:new',app.newGame);
 

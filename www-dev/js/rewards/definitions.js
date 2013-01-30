@@ -2,13 +2,25 @@
 
 define(
   [
-    'rewards/balloon/List'
+    'rewards/balloon/List',
+    'rewards/bubbles/main',
+    'rewards/colorBurst/main'
   ],
-  function (BalloonSelection) {
+  function (BalloonSelection, BubbleCanvas, ColorBurstCanvas) {
     "use strict";
 
-    return {
-      BalloonSelection : BalloonSelection
+    var RewardDefinitions = {
+
+      //ColorBurstCanvas Is having Issues Each 'new' it speeds up the particles
+      //need to investigate further
+
+      rewards : [BalloonSelection, BubbleCanvas],
+
+      getRandom : function() {
+        return this.rewards[~~(Math.random() * this.rewards.length)];
+      }
+
     };
 
+    return RewardDefinitions;
   });
