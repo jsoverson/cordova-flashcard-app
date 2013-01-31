@@ -73,7 +73,7 @@ define(['underscore'], function (_) {
     },
 
     stopWatching : function() {
-      if (navigator.accelerometer) {
+      if (navigator.accelerometer && this.currentWatch) {
         navigator.accelerometer.clearWatch(this.currentWatch);
       }
     }
