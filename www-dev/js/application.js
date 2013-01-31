@@ -25,8 +25,6 @@ define(
     app.newGame = function(){
       clearTimeout(app.newGameTimer);
 
-      //we are tracking this multiple times
-      //after the first call
       trak.event('game','new');
 
       var Game;
@@ -35,7 +33,8 @@ define(
       } else {
         Game = GameList.getRandom();
       }
-      app.main.show(new Game());
+
+       app.main.show(new Game());
     };
 
     app.mainMenu = function() { app.main.show(new MainMenu()); };

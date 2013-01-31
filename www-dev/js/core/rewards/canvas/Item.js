@@ -53,7 +53,7 @@ define([
       },
 
       _onClose : function () {
-        shakeController.stopWatching();
+//        shakeController.stopWatching();
         this.contextClear();
       },
 
@@ -73,6 +73,8 @@ define([
 
       _bindEvents : function () {
         window.addEventListener('resize', this._windowResizeHandler, false);
+        window.addEventListener('orientationchange', this._windowResizeHandler, false);
+
 
         this.canvas.addEventListener('mousemove', _.bind(this._onMouseMove, this), false);
         this.canvas.addEventListener('mousedown', _.bind(this._onMouseToggle, this), false);
@@ -137,9 +139,9 @@ define([
       _renderLoop  : function () {
         if (!this.paused) this.step();
 
-        this._renderCanvas();
-
         requestAnimFrame(_.bind(this._renderLoop, this));
+
+        this._renderCanvas();
       }
     });
 

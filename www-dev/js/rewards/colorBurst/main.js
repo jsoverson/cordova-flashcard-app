@@ -24,14 +24,17 @@ define(
       particleCount = 50,
       particles = [];
 
+    //testing
     var count = 0;
 
     var ColorBurst = RewardCanvasItem.extend({
 
       timer : 5,
 
+
       onRender : function () {
         if (this.canvas && this.context) {
+          this.contextClear();
           this.createParticles();
           this.trigger('render:loop');
         }

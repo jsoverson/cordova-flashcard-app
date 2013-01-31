@@ -13,6 +13,7 @@ define(
 
       //ColorBurstCanvas Is having Issues Each 'new' it speeds up the particles
       //need to investigate further
+      //    rewards : [ColorBurstCanvas],
 
       rewards : [BalloonSelection, BubbleCanvas],
 

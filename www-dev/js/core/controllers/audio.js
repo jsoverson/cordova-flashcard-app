@@ -15,10 +15,10 @@ define([], function () {
       this.extension = extension;
     },
 
-    prepare : function (type, sound) {
+    prepare : function (type, sound, continous) {
       if (window.Media) {
         //Stop Current Sound Playing
-        if (this.currentStream) this.currentStream.stop();
+        if (this.currentStream && !continous) this.currentStream.stop();
         //Allow cycling of failures / customized Success
         if (type === 'failure') sound = getFailureSound();
         var audioFile = this.getAudioFile(type, sound);
@@ -28,8 +28,8 @@ define([], function () {
       return null;
     },
 
-    play : function (type, sound) {
-      var media = this.prepare(type, sound);
+    play : function (type, sound,continous) {
+      var media = this.prepare(type, sound,continous);
       if (media){
         media.play();
       }

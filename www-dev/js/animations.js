@@ -36,8 +36,7 @@ define(
       },
       fireworks : function () {
         var display = new Fireworks(canvas);
-        var i = 7,
-          pop = audioController.prepare('action', 'pop', true);
+        var i = 7;
 
         while (i--) {
           setTimeout(function () {
@@ -45,7 +44,9 @@ define(
                 pos       : [window.innerWidth / 2, window.innerHeight],
                 vel       : [Math.random() * 6 - 3, -(Math.random() * 5) - 12],
                 hue       : Math.random() * 255,
-                onExplode : function () {pop && pop.play();}
+                onExplode : function () {
+                  audioController.play('action', 'pop', true);
+                }
               });
             },
             (Math.random() * 2) * 1000
