@@ -16,7 +16,7 @@ define(
 
     var BubblesItem = RewardCanvasItem.extend({
 
-      timer : 100,
+      timer : 10,
 
       shakeCallback : function() {
         this.contextClear();

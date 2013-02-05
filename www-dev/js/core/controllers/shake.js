@@ -6,15 +6,16 @@ define(['underscore'], function (_) {
   //Start of the shake controller for clearing the drawing canvas on device shake
   //We may want to put in the hooks for ondevicemotion to support devicemotion (android, IOS Safari web)
 
+
   var shakeController = {
 
-    currentWatch : null,
+  currentWatch : null,
 
     //how often to check
-    frequency : 1000,
+    frequency : 2000,
 
     //the shake delta
-    maxAccelerationDelta : 0.3,
+    maxAccelerationDelta : 0.1,
 
     prevAcceleration : {
       x: null,

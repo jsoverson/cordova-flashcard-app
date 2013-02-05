@@ -4,11 +4,10 @@ define([
   'marionette',
   'underscore',
   'core/controllers/audio',
-  'core/controllers/shake',
   'views/Timer'
 ],
 
-  function (Marionette, _, audioController, shakeController, Timer) {
+  function (Marionette, _, audioController, Timer) {
     "use strict";
 
     var CanvasItem = Marionette.ItemView.extend({
@@ -25,12 +24,6 @@ define([
         this.on('render', this._onRender, this);
         this.on('close', this._onClose, this);
         this.on('render:loop', this._renderLoop, this);
-        if (this.shakeCallback) {
-          if (navigator.accelerometer) {
-            //still flushing this out
-            //shakeController.startWatching(_.bind(this.shakeCallback,this));
-          }
-        }
       },
 
       contextClear : function () {
@@ -53,7 +46,6 @@ define([
       },
 
       _onClose : function () {
-        //        shakeController.stopWatching();
         this.contextClear();
       },
 
