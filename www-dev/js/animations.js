@@ -30,10 +30,7 @@ define(
         var burst = new Starburst(canvas);
         setTimeout(burst.stop, 4000);
       },
-      test      : function () {
-        context.fillStyle = 'red';
-        context.fillRect(50, 50, 100, 100);
-      },
+
       fireworks : function () {
         var display = new Fireworks(canvas);
         var i = 7;

@@ -16,13 +16,7 @@ define(
 
     var BubblesItem = RewardCanvasItem.extend({
 
-      timer : 10,
-
-      update : function(evt) {
-        pointerX = evt.pageX - evt.target.offsetLeft;
-        pointerY = evt.pageY - evt.target.offsetTop;
-        this.draw();
-      },
+      timer : 100,
 
       shakeCallback : function() {
         this.contextClear();
@@ -32,30 +26,42 @@ define(
         return '#'+Math.floor(Math.random()*16777215).toString(16);
       },
 
-      draw : function() {
-        var bubbleColor = this.getRandomColor();
-        this.context.globalCompositeOperation = "source-over";
-        this.context.beginPath();
-/*
-        this.context.shadowBlur=10;
-        this.context.shadowColor= bubbleColor;
-*/
-        this.context.fillStyle = bubbleColor;
-        this.context.arc( pointerX, pointerY,  (1 + Math.random() * scaleSkew) , 0, TwoPI, false);
-        this.context.closePath();
-        this.context.fill();
+      onWindowResize : function() {
+        this.draw();
+      },
+
+      draw : function(x,y) {
+          var bubbleColor = this.getRandomColor();
+          this.context.globalCompositeOperation = "source-over";
+          this.context.beginPath();
+          this.context.fillStyle = bubbleColor;
+          this.context.arc(x,y,  (1 + Math.random() * scaleSkew) , 0, TwoPI, false);
+          this.context.closePath();
+          this.context.fill();
+      },
+
+      updateMouse : function(evt) {
+        pointerX = evt.pageX - evt.target.offsetLeft;
+        pointerY = evt.pageY - evt.target.offsetTop;
+        this.draw(pointerX,pointerY);
       },
 
       onMouseMove : function(evt) {
-        this.update(evt);
+        this.updateMouse(evt);
       },
 
       onTouchStart : function(evt) {
-        this.update(evt);
+        this.updateTouches(evt.changedTouches);
       },
 
       onTouchMove : function(evt) {
-        this.update(evt);
+        this.updateTouches(evt.changedTouches);
+      },
+
+      updateTouches : function(touches) {
+        for (var i=0; i<touches.length; i++) {
+          this.draw(touches[i].pageX,touches[i].pageY);
+        }
       }
     });
 

@@ -1,4 +1,4 @@
-/*global require, define, document, requestAnimFrame*/
+/*global require, define, document, requestAnimationFrame */
 
 define([
   'marionette',
@@ -53,7 +53,7 @@ define([
       },
 
       _onClose : function () {
-//        shakeController.stopWatching();
+        //        shakeController.stopWatching();
         this.contextClear();
       },
 
@@ -99,19 +99,19 @@ define([
         }, this));
       },
 
-      _onMouseMove : function(evt) {
+      _onMouseMove : function (evt) {
         if (this.onMouseMove) this.onMouseMove(evt);
       },
 
-      _onTouchStart : function(evt) {
+      _onTouchStart : function (evt) {
         if (this.onTouchStart) this.onTouchStart(evt);
       },
 
-      _onMouseToggle : function(evt) {
+      _onMouseToggle : function (evt) {
         if (this.onMouseToggle) this.onMouseToggle(evt);
       },
 
-      _onTouchMove : function(evt) {
+      _onTouchMove : function (evt) {
         if (this.onTouchMove) this.onTouchMove(evt);
       },
 
@@ -136,10 +136,10 @@ define([
         }
       },
 
-      _renderLoop  : function () {
+      _renderLoop : function () {
         if (!this.paused) this.step();
 
-        requestAnimFrame(_.bind(this._renderLoop, this));
+        requestAnimationFrame(_.bind(this._renderLoop, this));
 
         this._renderCanvas();
       }

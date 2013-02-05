@@ -3,17 +3,16 @@
 define(
   [
     'rewards/balloon/List',
-    'rewards/bubbles/main',
-    'rewards/colorBurst/main'
+    'rewards/bubbles/main'
   ],
-  function (BalloonSelection, BubbleCanvas, ColorBurstCanvas) {
+  function (BalloonSelection, BubbleCanvas) {
     "use strict";
 
     var RewardDefinitions = {
 
       //ColorBurstCanvas Is having Issues Each 'new' it speeds up the particles
       //need to investigate further
-      //    rewards : [ColorBurstCanvas],
+      //BalloonSelection, BubbleCanvas
 
       rewards : [BalloonSelection, BubbleCanvas],
 

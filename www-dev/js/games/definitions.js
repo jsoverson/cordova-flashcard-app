@@ -2,10 +2,9 @@
 
 define(
   [
-    'games/alphabet/List',
-    'games/number/List'
+    'games/alphabet/List'
   ],
-  function (AlphabetSelection, NumberSelection) {
+  function (AlphabetSelection) {
     "use strict";
 
     var GameDefinitions = {
