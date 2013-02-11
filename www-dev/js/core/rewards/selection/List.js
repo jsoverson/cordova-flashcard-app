@@ -48,7 +48,9 @@ define(
       },
 
       _onRewardComplete : function () {
-        require('application').vent.trigger('game:new');
+        setTimeout(function() {
+          require('application').vent.trigger('game:new');
+        }, 200);
       },
 
       _unbindEvents : function () {
