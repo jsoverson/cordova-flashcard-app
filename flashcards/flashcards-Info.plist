@@ -15,6 +15,8 @@
 		<string>icon-72@2x.png</string>
 		<string>icon-72.png</string>
 		<string>icon-72@2x.png</string>
+		<string>Icon-iPad.png</string>
+		<string>Icon-iPad@2x.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -25,13 +27,15 @@
 				<string>icon-72@2x.png</string>
 				<string>icon-72.png</string>
 				<string>icon-72@2x.png</string>
+				<string>Icon-iPad.png</string>
+				<string>Icon-iPad@2x.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.soawesome.flashcards</string>
+	<string>com.summercamp.flashcards</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
