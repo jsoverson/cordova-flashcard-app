@@ -298,7 +298,7 @@ body {
 /* iPhone landscape */
 @media only screen and (max-device-width: 480px) and (orientation: landscape) {
   #main-menu {
-    background: url('../img/Default.png');
+    background: url('../img/Default-Landscape.png');
   }
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
