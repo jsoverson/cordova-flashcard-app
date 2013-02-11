@@ -289,6 +289,23 @@ body {
     font-size: 190px;
   }
 }
+/* iPhone portrait */
+@media only screen and (max-device-width: 480px) and (orientation: portrait) {
+  #main-menu {
+    background: url('../img/Default.png');
+  }
+}
+/* iPhone landscape */
+@media only screen and (max-device-width: 480px) and (orientation: landscape) {
+  #main-menu {
+    background: url('../img/Default.png');
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  #main-menu {
+    background: url('../img/Default-Portrait~ipad.png');
+  }
+}
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   #main-menu {
     background: url('../img/Default-Portrait~ipad.png');
