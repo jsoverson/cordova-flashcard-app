@@ -27,6 +27,15 @@ define(
           });
         });
         return itemArray;
+      },
+
+      onSuccessSelect: function() {
+        this.audioController.play('success', 'applause');
+        require('application').vent.trigger('game:completed');
+      },
+
+      onFailSelect : function() {
+        this.audioController.play('failure',this.getRandomFailureSound());
       }
     });
 

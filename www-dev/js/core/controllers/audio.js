@@ -19,8 +19,6 @@ define([], function () {
       if (window.Media) {
         //Stop Current Sound Playing
         if (this.currentStream && !continous) this.currentStream.stop();
-        //Allow cycling of failures / customized Success
-        if (type === 'failure') sound = getFailureSound();
         var audioFile = this.getAudioFile(type, sound);
         this.currentStream = getMediaObject(audioFile);
         return this.currentStream;
@@ -50,12 +48,6 @@ define([], function () {
 
   function getMediaObject(audioFile) {
     return new Media(audioFile, mediaSuccess, mediaError, mediaStatus);
-  }
-
-  function getFailureSound() {
-    var failures = ['hmm','uhoh','whoops'];
-    var index = ~~(Math.random() * failures.length);
-    return failures[index];
   }
 
   function mediaSuccess() {

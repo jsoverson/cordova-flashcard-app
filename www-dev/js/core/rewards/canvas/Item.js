@@ -12,6 +12,8 @@ define([
 
     var CanvasItem = Marionette.ItemView.extend({
 
+      audioController : audioController,
+
       timer : 10,
 
       paused   : false,
@@ -66,7 +68,6 @@ define([
       _bindEvents : function () {
         window.addEventListener('resize', this._windowResizeHandler, false);
         window.addEventListener('orientationchange', this._windowResizeHandler, false);
-
 
         this.canvas.addEventListener('mousemove', _.bind(this._onMouseMove, this), false);
         this.canvas.addEventListener('mousedown', _.bind(this._onMouseToggle, this), false);

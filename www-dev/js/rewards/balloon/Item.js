@@ -24,8 +24,8 @@ define(
       },
 
       onSelect : function() {
-        var img = document.getElementById('cloud');
         this.audioController.play('action', 'pop');
+        var img = document.getElementById('cloud');
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.context.drawImage(img, 0, 0, 200, 200);
         this.$el.addClass('transparent');

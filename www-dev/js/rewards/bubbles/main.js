@@ -30,6 +30,10 @@ define(
         this.draw();
       },
 
+      onRender : function() {
+        this.audioController.play('action', 'draw');
+      },
+
       draw : function(x,y) {
           var bubbleColor = this.getRandomColor();
           this.context.globalCompositeOperation = "source-over";

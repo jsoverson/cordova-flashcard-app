@@ -42,7 +42,7 @@ define(
                 vel       : [Math.random() * 6 - 3, -(Math.random() * 5) - 12],
                 hue       : Math.random() * 255,
                 onExplode : function () {
-                  audioController.play('action', 'pop', true);
+                  audioController.play('action', 'firework', true);
                 }
               });
             },

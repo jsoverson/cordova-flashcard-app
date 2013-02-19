@@ -21,6 +21,8 @@ define(
 
       maxItems : 6,
 
+      audioController : audioController,
+
       constructor : function () {
         Marionette.CompositeView.prototype.constructor.apply(this, arguments);
         this.on("item:added", this._bindItem, this);
@@ -48,7 +50,7 @@ define(
       },
 
       _onChildClick : function (childView) {
-        if (!childView.isTarget) this.onFailSelect();
+        if (!childView.isTarget) this._onFailSelect();
       },
 
       _onTargetFound : function (targetView) {
@@ -56,16 +58,23 @@ define(
           if (view !== targetView) view._hide();
         });
         targetView._fullscreen().success();
-        require('application').vent.trigger('game:completed');
+        if (_.isFunction(this.onSuccessSelect)) this.onSuccessSelect();
       },
 
       _unbindEvents : function () {
         this.unbindAll();
       },
 
-      onFailSelect : function () {
-        audioController.play('failure');
+      _onFailSelect : function () {
+        if (_.isFunction(this.onFailSelect)) this.onFailSelect();
+      },
+
+      getRandomFailureSound : function() {
+        var failures = ['hmm','uhoh','whoops'];
+        var index = ~~(Math.random() * failures.length);
+        return failures[index];
       }
+
     });
 
     return SelectionList;

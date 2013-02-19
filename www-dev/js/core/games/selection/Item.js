@@ -22,6 +22,8 @@ define(
 
       isTarget : false,
 
+      audioController : audioController,
+
       constructor : function () {
         Marionette.ItemView.prototype.constructor.apply(this, arguments);
         this._bindEvents();
@@ -45,8 +47,7 @@ define(
 
         if (this.isTarget) {
           this.trigger('pickable:targetClick', this);
-        }
-        else {
+        } else {
           this.$el.addClass('targetMissed transparent');
         }
       },
@@ -59,7 +60,7 @@ define(
 
       success : function () {
         this.el.style.position = 'absolute';
-        audioController.play('success', 'applause');
+        if (_.isFunction(this.onSuccess)) this.onSuccess();
         return this;
       },
 
@@ -73,7 +74,7 @@ define(
           item = this.model.get(type);
         item = _.isString(item) ? item.toLowerCase() : item;
 
-        audioController.play(type, item);
+        if (_.isFunction(this.onQuestion)) this.onQuestion(type,item);
         return this;
       }
     });
