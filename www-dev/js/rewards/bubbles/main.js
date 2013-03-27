@@ -31,7 +31,7 @@ define(
       },
 
       onRender : function() {
-        this.audioController.play('action', 'draw');
+        //this.audioController.play('action', 'draw');
       },
 
       draw : function(x,y) {
