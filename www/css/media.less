@@ -142,3 +142,274 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
 }
+
+
+
+/**
+
+// small screens/hd small screens
+@media only screen
+and (orientation:landscape)
+and (max-width: 1023px) {
+  .pickable {
+    border-width: 7px !important;
+    border-radius: 15% !important;
+    span {
+      font-size: 90px !important;
+    }
+  }
+}
+// small screens/hd small screens
+@media only screen
+and (orientation:portrait)
+and (max-width: 700px) {
+  .pickable {
+    border-width: 7px !important;
+    border-radius: 15% !important;
+    span {
+      font-size: 90px !important;
+    }
+  }
+}
+
+@media (orientation:landscape) {
+  .pickable-item {
+    &.fullscreen {
+      top:20%;
+      left:33.3%;
+    }
+    height : 50%;
+    width : 33.3%;
+
+    span {
+      font-size: 190px;
+    }
+  }
+}
+
+@media (orientation:portrait) {
+  .pickable-item {
+    &.fullscreen {
+      top:33.3%;
+      left:25%;
+    }
+    height : 33.3%;
+    width : 50%;
+
+    span {
+      font-size: 190px;
+    }
+  }
+}
+
+//ipad portrait
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+
+  #main-menu {
+    background: url('../img/Default-Portrait~ipad.png');
+  }
+}
+
+//ipad portrait
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+
+  #main-menu {
+    background: url('../img/Default-Portrait~ipad.png');
+  }
+}
+
+//ipad landscape
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) {
+
+  #main-menu {
+    background: url('../img/Default-Landscape~ipad.png');
+  }
+}
+
+//retina ipad portrait
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+  #main-menu {
+    background: url('../img/Default-Portrait@2x~ipad.png');
+  }
+}
+
+//retina landscape
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+  #main-menu {
+    background: url('../img/Default-Landscape@2x~ipad.png');
+  }
+}
+
+/* iPhone portrait */
+@media only screen
+and (max-device-width: 480px)
+and (orientation : portrait)
+and (device-aspect-ratio: 2/3){
+
+  #main-menu {
+    background: url('../img/Default.png');
+  }
+
+}
+
+/* iPhone landscape */
+@media only screen
+and (max-device-width: 480px)
+and (orientation : landscape)
+and (device-aspect-ratio: 2/3){
+
+  #main-menu {
+    background: url('../img/Default-Landscape.png');
+  }
+}
+
+/*
+
+// ---------------------------------------------------------------------------------------------------------------------
+// --- iphone-non-retina -----------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  and (-webkit-device-pixel-ratio: 1) {
+    //ALL STYLES
+  }
+
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  and (-webkit-device-pixel-ratio: 1) and (orientation:portrait) {
+
+    #main-menu {
+      background: url('../img/Default.png');
+    }
+
+  }
+
+
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  and (-webkit-device-pixel-ratio: 1) and (orientation:landscape) {
+
+    #main-menu {
+      background: url('../img/Default-Landscape.png');
+    }
+
+  }
+
+// ---------------------------------------------------------------------------------------------------------------------
+// --- iphone-retina ---------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) {
+
+  }
+
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) and (orientation:portrait) {
+
+    #main-menu {
+      background: url('../img/Default-568h@2x.png');
+    }
+
+  }
+
+  @media only screen and (min-device-width: 320px)  and (max-device-width: 480px)
+  and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) and (orientation:landscape) {
+
+  }
+
+// ---------------------------------------------------------------------------------------------------------------------
+// --- iphone-5 --------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+  @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+  and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) {
+
+  }
+
+  @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+  and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) and (orientation:portrait) {
+
+
+    #main-menu {
+      background: url('../img/Default-568h@2x.png');
+    }
+
+
+  }
+
+  @media only screen and (min-device-width: 320px) and (max-device-width: 568px)
+  and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71) and (orientation:landscape){
+
+  }
+
+// ---------------------------------------------------------------------------------------------------------------------
+// --- ipads (all) -----------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+
+  }
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait) {
+
+    #main-menu {
+      background: url('../img/Default-Portrait~ipad.png');
+    }
+
+  }
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {
+
+    #main-menu {
+      background: url('../img/Default-Landscape~ipad.png');
+    }
+
+  }
+
+// ---------------------------------------------------------------------------------------------------------------------
+// --- ipad-retina -----------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+  @media screen and (min-device-width: 768px) and (max-device-width: 1024px)
+  and (-webkit-device-pixel-ratio: 2) {
+
+  }
+
+  @media screen and (min-device-width: 768px) and (max-device-width: 1024px)
+  and (-webkit-device-pixel-ratio: 2) and (orientation:portrait) {
+
+    #main-menu {
+      background: url('../img/Default-Portrait@2x~ipad.png');
+    }
+
+  }
+
+  @media screen and (min-device-width: 768px) and (max-device-width: 1024px)
+  and (-webkit-device-pixel-ratio: 2) and (orientation:landscape) {
+
+    #main-menu {
+      background: url('../img/Default-Landscape@2x~ipad.png');
+    }
+
+  }
+
+**/
